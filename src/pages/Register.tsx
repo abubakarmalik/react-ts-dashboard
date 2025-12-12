@@ -15,10 +15,14 @@ import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { styled } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
   '& .MuiOutlinedInput-root': {
-    borderRadius: '12px',
+    borderRadius: '8px',
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#000',
+    },
 
     // border color on hover
     '&:hover .MuiOutlinedInput-notchedOutline': {
@@ -56,7 +60,7 @@ const Register = () => {
       spacing={2}
       container
       sx={{
-        padding: 4,
+        padding: 3,
       }}
     >
       <Grid size={7}>
@@ -76,7 +80,7 @@ const Register = () => {
         </Typography>
         <Box
           component="form"
-          sx={{ display: 'flex', flexDirection: 'column', gap: 1.2 }}
+          sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
         >
           <CustomTextField
             placeholder="Enter First Name"
@@ -87,7 +91,7 @@ const Register = () => {
               input: {
                 startAdornment: (
                   <InputAdornment position="start">
-                    <PersonalInjuryIcon />
+                    <PersonalInjuryIcon sx={{ color: 'text.primary' }} />
                   </InputAdornment>
                 ),
               },
@@ -102,7 +106,7 @@ const Register = () => {
               input: {
                 startAdornment: (
                   <InputAdornment position="start">
-                    <PersonalInjuryIcon />
+                    <PersonalInjuryIcon sx={{ color: 'text.primary' }} />
                   </InputAdornment>
                 ),
               },
@@ -117,7 +121,7 @@ const Register = () => {
               input: {
                 startAdornment: (
                   <InputAdornment position="start">
-                    <PersonIcon />
+                    <PersonIcon sx={{ color: 'text.primary' }} />
                   </InputAdornment>
                 ),
               },
@@ -132,7 +136,7 @@ const Register = () => {
               input: {
                 startAdornment: (
                   <InputAdornment position="start">
-                    <EmailIcon />
+                    <EmailIcon sx={{ color: 'text.primary' }} />
                   </InputAdornment>
                 ),
               },
@@ -147,7 +151,7 @@ const Register = () => {
               input: {
                 startAdornment: (
                   <InputAdornment position="start">
-                    <LockIcon />
+                    <LockIcon sx={{ color: 'text.primary' }} />
                   </InputAdornment>
                 ),
               },
@@ -162,14 +166,14 @@ const Register = () => {
               input: {
                 startAdornment: (
                   <InputAdornment position="start">
-                    <LockOpenIcon />
+                    <LockOpenIcon sx={{ color: 'text.primary' }} />
                   </InputAdornment>
                 ),
               },
             }}
           />
           <FormControlLabel
-            control={<Checkbox />}
+            control={<Checkbox sx={{ color: 'text.disabled' }} />}
             label="I agree to all terms"
           />
           <Button
@@ -183,6 +187,19 @@ const Register = () => {
           >
             Register
           </Button>
+          <Typography
+            component="p"
+            sx={{ fontWeight: '500', fontSize: '16px' }}
+          >
+            Already have an account? &nbsp;
+            <Box
+              component={Link}
+              to="/auth/signin"
+              sx={{ display: 'inline', color: 'info.light', cursor: 'pointer' }}
+            >
+              Sign In
+            </Box>
+          </Typography>
         </Box>
       </Grid>
     </Grid>

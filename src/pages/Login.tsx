@@ -15,10 +15,14 @@ import loginImg from '../assets/images/login-img.png';
 import fb from '../assets/icons/fb.png';
 import google from '../assets/icons/google.png';
 import x from '../assets/icons/x.png';
+import { Link } from 'react-router-dom';
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
   '& .MuiOutlinedInput-root': {
-    borderRadius: '12px',
+    borderRadius: '8px',
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#000',
+    },
 
     // border color on hover
     '&:hover .MuiOutlinedInput-notchedOutline': {
@@ -85,7 +89,7 @@ const Login = () => {
               input: {
                 startAdornment: (
                   <InputAdornment position="start">
-                    <PersonIcon />
+                    <PersonIcon sx={{ color: 'text.primary' }} />
                   </InputAdornment>
                 ),
               },
@@ -100,13 +104,16 @@ const Login = () => {
               input: {
                 startAdornment: (
                   <InputAdornment position="start">
-                    <LockIcon />
+                    <LockIcon sx={{ color: 'text.primary' }} />
                   </InputAdornment>
                 ),
               },
             }}
           />
-          <FormControlLabel control={<Checkbox />} label="Remember Me" />
+          <FormControlLabel
+            control={<Checkbox sx={{ color: 'text.disabled' }} />}
+            label="Remember Me"
+          />
           <Button
             variant="contained"
             type="submit"
@@ -151,7 +158,8 @@ const Login = () => {
           >
             Don’t have an account? &nbsp;
             <Box
-              component="span"
+              component={Link}
+              to="/auth/signup"
               sx={{ display: 'inline', color: 'info.light', cursor: 'pointer' }}
             >
               Create One
