@@ -13,9 +13,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { theme } from '../theme';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
+  display: 'flex',
   boxShadow: theme.shadows[3],
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
@@ -25,7 +27,7 @@ const Search = styled('div')(({ theme }) => ({
   marginRight: theme.spacing(2),
   marginLeft: 0,
   width: '100%',
-  [theme.breakpoints.up('sm')]: {
+  [theme.breakpoints.up('xs')]: {
     marginLeft: theme.spacing(3),
     width: 'auto',
   },
@@ -39,7 +41,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('xs')]: {
+      width: '9ch',
+    },
+    [theme.breakpoints.up('sm')]: {
       width: '25ch',
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '30ch',
     },
   },
 }));
@@ -108,89 +116,94 @@ export default function Navbar({ toggleDrawer }: DrawerProps) {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ background: 'background', boxShadow: 1 }}>
-        <Toolbar>
+    <AppBar
+      position="fixed"
+      sx={{
+        bgcolor: 'background.default',
+        boxShadow: 1,
+        zIndex:  1,
+      }}
+    >
+      <Toolbar>
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="open drawer"
+          sx={{ mr: 2, display: { xs: 'block', md: 'none' } }}
+          onClick={toggleDrawer(true)}
+        >
+          <MenuIcon sx={{ color: 'text.secondary' }} />
+        </IconButton>
+
+        <Typography
+          variant="h6"
+          noWrap
+          component="div"
+          sx={{
+            display: { xs: 'none', md: 'block' },
+            fontSize: '22px',
+            fontWeight: '600',
+          }}
+          color="text.secondary"
+        >
+          Dash
+          <Box component="span" color="text.primary">
+            board
+          </Box>
+        </Typography>
+
+        <Box sx={{ flexGrow: 1 }} />
+
+        <Search>
+          <StyledInputBase
+            placeholder={'Search your task here'}
+            inputProps={{ 'aria-label': 'search' }}
+          />
+          <RoundIconBtn>
+            <SearchIcon />
+          </RoundIconBtn>
+        </Search>
+
+        <Box sx={{ flexGrow: 1 }} />
+
+        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <RoundIconBtn sx={{ mr: 1 }}>
+            <NotificationsIcon />
+          </RoundIconBtn>
+          <RoundIconBtn sx={{ mr: 1 }}>
+            <CalendarMonthIcon />
+          </RoundIconBtn>
+          <Box sx={{ textAlign: 'left', marginLeft: 1 }}>
+            <Typography sx={{ fontWeight: 600, fontSize: '14px' }}>
+              {day}
+            </Typography>
+            <Typography
+              sx={{
+                color: 'info.main',
+                fontSize: '13px',
+                fontWeight: 500,
+              }}
+            >
+              {today}
+            </Typography>
+          </Box>
+        </Box>
+
+        <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
           <IconButton
             size="large"
-            edge="start"
+            aria-label="show more"
+            aria-controls={mobileMenuId}
+            aria-haspopup="true"
+            onClick={handleMobileMenuOpen}
             color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2, display: { md: 'none', sm: 'block' } }}
           >
-            <MenuIcon
-              sx={{ color: 'text.secondary' }}
-              onClick={toggleDrawer(true)}
-            />
+            <MoreIcon sx={{ color: theme.palette.text.secondary }} />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{
-              display: {
-                xs: 'none',
-                md: 'block',
-                fontSize: '22px',
-                fontWeight: '600',
-              },
-            }}
-            color="text.secondary"
-          >
-            Dash
-            <Box component="span" color="text.primary">
-              board
-            </Box>
-          </Typography>
-          <Box sx={{ flexGrow: 1 }} />
-          <Search>
-            <StyledInputBase
-              placeholder="Search your task here"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-            <RoundIconBtn>
-              <SearchIcon />
-            </RoundIconBtn>
-          </Search>
-
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <RoundIconBtn sx={{ mr: 1 }}>
-              <NotificationsIcon />
-            </RoundIconBtn>
-            <RoundIconBtn sx={{ mr: 1 }}>
-              <CalendarMonthIcon />
-            </RoundIconBtn>
-            <Box sx={{ textAlign: 'left', marginLeft: 1 }}>
-              <Typography sx={{ fontWeight: 600, fontSize: '14px' }}>
-                {day}
-              </Typography>
-              <Typography
-                sx={{
-                  color: 'info.main',
-                  fontSize: '13px',
-                  fontWeight: 500,
-                }}
-              >
-                {today}
-              </Typography>
-            </Box>
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
+        </Box>
+      </Toolbar>
       {renderMobileMenu}
-    </Box>
+    </AppBar>
   );
 }
