@@ -8,6 +8,7 @@ import {
   ListItemIcon,
   ListItemText,
   Button,
+  Drawer,
 } from '@mui/material';
 import { useState } from 'react';
 import ellipse from '../assets/images/Ellipse.png';
@@ -26,33 +27,115 @@ interface MenuItem {
   icon: React.ReactNode;
 }
 
-const Sidebar = () => {
-  const [activeMenu, setActiveMenu] = useState('dashboard');
+interface SidebarProps {
+  open: boolean;
+  toggleDrawer: (newOpen: boolean) => () => void;
+}
 
+const SidebarContent = ({
+  activeMenu,
+  setActiveMenu,
+  isDrawer = false,
+}: any) => {
   const menuItems: MenuItem[] = [
-    { id: 'dashboard', label: 'Dashboard', icon: <DashboardIcon /> },
-    { id: 'vital-task', label: 'Vital Task', icon: <PriorityHighIcon /> },
-    { id: 'my-task', label: 'My Task', icon: <CheckCircleIcon /> },
+    {
+      id: 'dashboard',
+      label: 'Dashboard',
+      icon: <DashboardIcon sx={{ fontSize: { xs: 'medium', lg: 'large' } }} />,
+    },
+    {
+      id: 'vital-task',
+      label: 'Vital Task',
+      icon: (
+        <PriorityHighIcon sx={{ fontSize: { xs: 'medium', lg: 'large' } }} />
+      ),
+    },
+    {
+      id: 'my-task',
+      label: 'My Task',
+      icon: (
+        <CheckCircleIcon sx={{ fontSize: { xs: 'medium', lg: 'large' } }} />
+      ),
+    },
     {
       id: 'task-categories',
       label: 'Task Categories',
-      icon: <AssignmentIcon />,
+      icon: <AssignmentIcon sx={{ fontSize: { xs: 'medium', lg: 'large' } }} />,
     },
-    { id: 'settings', label: 'Settings', icon: <SettingsIcon /> },
-    { id: 'help', label: 'Help', icon: <HelpIcon /> },
+    {
+      id: 'settings',
+      label: 'Settings',
+      icon: <SettingsIcon sx={{ fontSize: { xs: 'medium', lg: 'large' } }} />,
+    },
+    {
+      id: 'help',
+      label: 'Help',
+      icon: <HelpIcon sx={{ fontSize: { xs: 'medium', lg: 'large' } }} />,
+    },
   ];
 
   return (
-    <Box display={{ xs: 'none', md: 'block' }}>
+    <Box
+      sx={{
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+        // overflowY: 'auto',
+        //   '&::-webkit-scrollbar': {
+        //     width: '6px',
+        //   },
+        //   '&::-webkit-scrollbar-thumb': {
+        //     backgroundColor: 'rgba(255, 255, 255, 0.3)',
+        //     borderRadius: '3px',
+        //   },
+      }}
+    >
+      {/* Top Section - White Background */}
       <Box
         sx={{
-          width: '100%',
-          height: '100vh',
+          bgcolor: 'background.default',
+          height: '60px',
+          position: 'relative',
+        }}
+      >
+        {/* Avatar positioned to overlap both sections */}
+        <Avatar
+          sx={{
+            width: 80,
+            height: 80,
+            border: '4px solid white',
+            boxShadow: 3,
+            position: 'absolute',
+            top: '10px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 10,
+          }}
+          src={ellipse}
+          alt="Sundar Gurung"
+        />
+      </Box>
+
+      {/* Bottom Section - Primary Color Background */}
+      <Box
+        sx={{
           background: theme.palette.primary.main,
-          padding: '30px 20px',
           display: 'flex',
           flexDirection: 'column',
           color: 'white',
+          flex: 1,
+          pt: '50px',
+          px: 2,
+          pb: 2,
+          overflowY: 'auto',
+          '&::-webkit-scrollbar': {
+            width: '6px',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: 'rgba(255, 255, 255, 0.3)',
+            borderRadius: '3px',
+          },
         }}
       >
         {/* Profile Section */}
@@ -61,26 +144,28 @@ const Sidebar = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            marginBottom: '40px',
+            marginBottom: '30px',
           }}
         >
-          <Avatar
-            sx={{
-              width: 100,
-              height: 100,
-              marginBottom: '15px',
-              border: '2px solid white',
-            }}
-            src={ellipse}
-            alt="Sundar Gurung"
-          />
           <Typography
             variant="h6"
-            sx={{ fontWeight: 'bold', marginBottom: '5px' }}
+            sx={{
+              fontWeight: 'bold',
+              marginBottom: '5px',
+              fontSize: { xs: '16px', sm: '18px' },
+            }}
           >
             Sundar Gurung
           </Typography>
-          <Typography variant="body2" sx={{ opacity: 0.9 }}>
+          <Typography
+            variant="body2"
+            sx={{
+              opacity: 0.9,
+              fontSize: { xs: '12px', sm: '13px' },
+              textAlign: 'center',
+              px: 1,
+            }}
+          >
             sundargurug360@gmail.com
           </Typography>
         </Box>
@@ -92,13 +177,7 @@ const Sidebar = () => {
               key={item.id}
               disablePadding
               sx={{
-                marginBottom: '15px',
-                backgroundColor:
-                  activeMenu === item.id
-                    ? theme.palette.text.disabled
-                    : 'transparent',
-                borderRadius: '12px',
-                overflow: 'hidden',
+                marginBottom: '8px',
               }}
             >
               <ListItemButton
@@ -106,18 +185,20 @@ const Sidebar = () => {
                 sx={{
                   backgroundColor:
                     activeMenu === item.id
-                      ? 'rgba(255, 255, 255, 0.9)'
+                      ? 'rgba(255, 255, 255, 0.95)'
                       : 'transparent',
                   color:
                     activeMenu === item.id
                       ? theme.palette.primary.main
                       : 'white',
                   borderRadius: '12px',
+                  py: 1.5,
+                  px: 2,
                   '&:hover': {
                     backgroundColor:
                       activeMenu === item.id
-                        ? 'rgba(255, 255, 255, 0.9)'
-                        : 'rgba(255, 255, 255, 0.15)',
+                        ? 'rgba(255, 255, 255, 0.95)'
+                        : 'rgba(255, 255, 255, 0.1)',
                   },
                   transition: 'all 0.3s ease',
                 }}
@@ -138,6 +219,7 @@ const Sidebar = () => {
                   sx={{
                     '& .MuiTypography-root': {
                       fontWeight: activeMenu === item.id ? '600' : '500',
+                      fontSize: { xs: '14px', sm: '15px' },
                     },
                   }}
                 />
@@ -155,11 +237,12 @@ const Sidebar = () => {
             alignItems: 'center',
             color: 'white',
             textTransform: 'none',
-            fontSize: '16px',
+            fontSize: { xs: '14px', sm: '16px' },
             padding: '12px 16px',
             borderRadius: '12px',
+            mt: 2,
             '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.15)',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
             },
             transition: 'all 0.3s ease',
           }}
@@ -169,6 +252,63 @@ const Sidebar = () => {
         </Button>
       </Box>
     </Box>
+  );
+};
+
+const Sidebar = ({ open, toggleDrawer }: SidebarProps) => {
+  const [activeMenu, setActiveMenu] = useState('dashboard');
+
+  return (
+    <>
+      {/* Mobile Drawer */}
+      <Drawer
+        open={open}
+        onClose={toggleDrawer(false)}
+        sx={{
+          display: { xs: 'block', md: 'none' },
+          '& .MuiDrawer-paper': {
+            width: { xs: 260, sm: 300 },
+            boxSizing: 'border-box',
+          },
+        }}
+      >
+        <Box
+          role="presentation"
+          onClick={toggleDrawer(false)}
+          sx={{ height: '100%' }}
+        >
+          <SidebarContent
+            activeMenu={activeMenu}
+            setActiveMenu={setActiveMenu}
+            isDrawer={true}
+          />
+        </Box>
+      </Drawer>
+
+      {/* Desktop Fixed Sidebar */}
+      <Box
+        sx={{
+          display: { xs: 'none', md: 'block' },
+          position: 'fixed',
+          top: 64, // Height of AppBar
+          left: 0,
+          width: '25%', // 3/12 grid = 25%
+          height: 'calc(100vh - 64px)',
+          bgcolor: 'background.paper',
+          zIndex: (theme) => theme.zIndex.drawer,
+          // overflowY: 'auto',
+          // '&::-webkit-scrollbar': {
+          //   width: '6px',
+          // },
+          // '&::-webkit-scrollbar-thumb': {
+          //   backgroundColor: 'rgba(255, 255, 255, 0.3)',
+          //   borderRadius: '3px',
+          // },
+        }}
+      >
+        <SidebarContent activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+      </Box>
+    </>
   );
 };
 
