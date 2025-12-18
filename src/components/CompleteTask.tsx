@@ -27,20 +27,24 @@ const CompleteTask = () => {
           paragraph="Take the dog to the park and bring treats as well."
           img={cardimg4}
           priority={false}
+          priorityText=""
           priorityColor={theme.palette.success.main}
           status="Completed"
           statusColor={theme.palette.success.main}
           disabledText="Created on: 19/06/2023"
+          selected={false}
         />
         <TaskCard
           heading="Conduct meeting"
           paragraph="Meet with the client and finalize requirements."
           img={cardimg3}
           priority={false}
+          priorityText=""
           priorityColor={theme.palette.success.main}
           status="Completed"
           statusColor={theme.palette.success.main}
           disabledText="Created on: 19/06/2023"
+          selected={false}
         />
       </Grid>
     </Box>

@@ -8,10 +8,12 @@ interface TaskCardProps {
   paragraph: string;
   img: string;
   priority: boolean;
+  priorityText: string;
   priorityColor: string;
   status: string;
   statusColor: string;
   disabledText: string;
+  selected: boolean;
 }
 
 const TaskCard = ({
@@ -19,10 +21,12 @@ const TaskCard = ({
   paragraph,
   img,
   priority,
+  priorityText,
   priorityColor,
   status,
   statusColor,
   disabledText,
+  selected,
 }: TaskCardProps) => {
   return (
     <Box
@@ -31,6 +35,7 @@ const TaskCard = ({
         border: '1px solid #cacaca',
         borderRadius: 3,
         padding: 1,
+        bgcolor: selected ? '#A1A3AB2B' : '',
       }}
     >
       <Box
@@ -53,7 +58,9 @@ const TaskCard = ({
             component="p"
             sx={{
               color: theme.palette.text.primary,
-              fontSize: '16px',
+              fontSize: {
+                xs: '16px',
+              },
               fontWeight: '600',
               lineHeight: 1.5,
             }}
@@ -78,7 +85,9 @@ const TaskCard = ({
           <Typography
             component="p"
             sx={{
-              fontSize: '14px',
+              fontSize: {
+                xs: '14px',
+              },
               fontWeight: '400',
               color: theme.palette.text.disabled,
             }}
@@ -86,10 +95,15 @@ const TaskCard = ({
             {paragraph}
           </Typography>
           {!priority && (
-            <Box sx={{mt: 1}}>
+            <Box sx={{ mt: 1 }}>
               <Typography
                 component="p"
-                sx={{ fontSize: '10px', fontWeight: '400' }}
+                sx={{
+                  fontSize: {
+                    xs: '10px',
+                  },
+                  fontWeight: '400',
+                }}
               >
                 Status:&nbsp;
                 <Box component="span" sx={{ color: statusColor }}>
@@ -99,7 +113,9 @@ const TaskCard = ({
               <Typography
                 component="p"
                 sx={{
-                  fontSize: '10px',
+                  fontSize: {
+                    xs: '10px',
+                  },
                   fontWeight: '400',
                   color: theme.palette.text.disabled,
                 }}
@@ -126,16 +142,26 @@ const TaskCard = ({
         >
           <Typography
             component="p"
-            sx={{ fontSize: '10px', fontWeight: '400' }}
+            sx={{
+              fontSize: {
+                xs: '10px',
+              },
+              fontWeight: '400',
+            }}
           >
             Priority:&nbsp;
             <Box component="span" sx={{ color: priorityColor }}>
-              Moderate
+              {priorityText}
             </Box>
           </Typography>
           <Typography
             component="p"
-            sx={{ fontSize: '10px', fontWeight: '400' }}
+            sx={{
+              fontSize: {
+                xs: '10px',
+              },
+              fontWeight: '400',
+            }}
           >
             Status:&nbsp;
             <Box component="span" sx={{ color: statusColor }}>
@@ -145,7 +171,9 @@ const TaskCard = ({
           <Typography
             component="p"
             sx={{
-              fontSize: '10px',
+              fontSize: {
+                xs: '10px',
+              },
               fontWeight: '400',
               color: theme.palette.text.disabled,
             }}

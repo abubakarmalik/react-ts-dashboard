@@ -16,5 +16,3 @@ function App() {
 }
 
 export default App;
-
-// https://www.figma.com/design/C3ofy4wJ68IAQXnYyHxYx5/To-do-List-Web-App-Design--Community-?node-id=442-891&t=SkU0kMfi6CbFKoe8-0

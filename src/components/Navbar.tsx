@@ -121,7 +121,7 @@ export default function Navbar({ toggleDrawer }: DrawerProps) {
       sx={{
         bgcolor: 'background.default',
         boxShadow: 1,
-        zIndex:  1,
+        zIndex: (theme) => theme.zIndex.drawer + 1,
       }}
     >
       <Toolbar>
