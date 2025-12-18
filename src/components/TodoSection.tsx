@@ -66,20 +66,24 @@ const TodoSection = () => {
           paragraph="Buy gifts on the way and pick up cake from the bakery. (6 PM | Fresh Elements)....."
           img={cardimg1}
           priority={true}
+          priorityText="Moderate"
           priorityColor={theme.palette.info.light}
           status="Not Started"
           statusColor={theme.palette.error.main}
           disabledText="Created on: 19/06/2023"
+          selected={false}
         />
         <TaskCard
           heading="Landing Page Design for TravelDays"
           paragraph="Get the work done by EOD and discuss with client before leaving. (4 PM | Meeting Room)"
           img={cardimg2}
           priority={true}
+          priorityText="Moderate"
           priorityColor={theme.palette.info.light}
           status="In Progress"
           statusColor={theme.palette.info.dark}
           disabledText="Created on: 19/06/2023"
+          selected={false}
         />
       </Grid>
     </Box>

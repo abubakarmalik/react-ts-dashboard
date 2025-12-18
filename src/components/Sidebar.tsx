@@ -20,11 +20,13 @@ import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import HelpIcon from '@mui/icons-material/Help';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { theme } from '../theme';
+import { Link } from 'react-router-dom';
 
 interface MenuItem {
   id: string;
   label: string;
   icon: React.ReactNode;
+  to: string;
 }
 
 interface SidebarProps {
@@ -42,6 +44,7 @@ const SidebarContent = ({
       id: 'dashboard',
       label: 'Dashboard',
       icon: <DashboardIcon sx={{ fontSize: { xs: 'medium', lg: 'large' } }} />,
+      to: '/',
     },
     {
       id: 'vital-task',
@@ -49,6 +52,7 @@ const SidebarContent = ({
       icon: (
         <PriorityHighIcon sx={{ fontSize: { xs: 'medium', lg: 'large' } }} />
       ),
+      to: '/vital-task',
     },
     {
       id: 'my-task',
@@ -56,21 +60,25 @@ const SidebarContent = ({
       icon: (
         <CheckCircleIcon sx={{ fontSize: { xs: 'medium', lg: 'large' } }} />
       ),
+      to: '/my-task',
     },
     {
       id: 'task-categories',
       label: 'Task Categories',
       icon: <AssignmentIcon sx={{ fontSize: { xs: 'medium', lg: 'large' } }} />,
+      to: '/task-categories',
     },
     {
       id: 'settings',
       label: 'Settings',
       icon: <SettingsIcon sx={{ fontSize: { xs: 'medium', lg: 'large' } }} />,
+      to: '/settings',
     },
     {
       id: 'help',
       label: 'Help',
       icon: <HelpIcon sx={{ fontSize: { xs: 'medium', lg: 'large' } }} />,
+      to: '/helps',
     },
   ];
 
@@ -179,6 +187,8 @@ const SidebarContent = ({
               sx={{
                 marginBottom: '8px',
               }}
+              component={Link}
+              to={item.to}
             >
               <ListItemButton
                 onClick={() => setActiveMenu(item.id)}
