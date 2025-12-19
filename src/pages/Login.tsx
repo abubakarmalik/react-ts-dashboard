@@ -64,10 +64,9 @@ const Login = () => {
       }}
     >
       <Grid
-        size={5}
+        size={{ xs: 12, md: 5 }}
         sx={{
-          pl: 4,
-          pt: 4,
+          p: 4,
         }}
       >
         <Typography
@@ -167,7 +166,10 @@ const Login = () => {
           </Typography>
         </Box>
       </Grid>
-      <Grid size={7}>
+      <Grid
+        size={{ xs: 12, md: 7 }}
+        sx={{ display: { xs: 'none', md: 'block' } }}
+      >
         <Box
           component="img"
           alt="login-image"
