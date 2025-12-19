@@ -20,7 +20,7 @@ import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import HelpIcon from '@mui/icons-material/Help';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { theme } from '../theme';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 interface MenuItem {
   id: string;
@@ -38,6 +38,7 @@ const SidebarContent = ({
   activeMenu,
   setActiveMenu,
   isDrawer = false,
+  handleLogoutbtn,
 }: any) => {
   const menuItems: MenuItem[] = [
     {
@@ -89,14 +90,6 @@ const SidebarContent = ({
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        // overflowY: 'auto',
-        //   '&::-webkit-scrollbar': {
-        //     width: '6px',
-        //   },
-        //   '&::-webkit-scrollbar-thumb': {
-        //     backgroundColor: 'rgba(255, 255, 255, 0.3)',
-        //     borderRadius: '3px',
-        //   },
       }}
     >
       {/* Top Section - White Background */}
@@ -191,14 +184,14 @@ const SidebarContent = ({
               to={item.to}
             >
               <ListItemButton
-                onClick={() => setActiveMenu(item.id)}
+                onClick={() => setActiveMenu(item.to)}
                 sx={{
                   backgroundColor:
-                    activeMenu === item.id
+                    activeMenu === item.to
                       ? 'rgba(255, 255, 255, 0.95)'
                       : 'transparent',
                   color:
-                    activeMenu === item.id
+                    activeMenu === item.to
                       ? theme.palette.primary.main
                       : 'white',
                   borderRadius: '12px',
@@ -206,7 +199,7 @@ const SidebarContent = ({
                   px: 2,
                   '&:hover': {
                     backgroundColor:
-                      activeMenu === item.id
+                      activeMenu === item.to
                         ? 'rgba(255, 255, 255, 0.95)'
                         : 'rgba(255, 255, 255, 0.1)',
                   },
@@ -216,7 +209,7 @@ const SidebarContent = ({
                 <ListItemIcon
                   sx={{
                     color:
-                      activeMenu === item.id
+                      activeMenu === item.to
                         ? theme.palette.primary.main
                         : 'white',
                     minWidth: '40px',
@@ -228,7 +221,7 @@ const SidebarContent = ({
                   primary={item.label}
                   sx={{
                     '& .MuiTypography-root': {
-                      fontWeight: activeMenu === item.id ? '600' : '500',
+                      fontWeight: activeMenu === item.to ? '600' : '500',
                       fontSize: { xs: '14px', sm: '15px' },
                     },
                   }}
@@ -241,6 +234,7 @@ const SidebarContent = ({
         {/* Logout Button */}
         <Button
           fullWidth
+          onClick={handleLogoutbtn}
           sx={{
             display: 'flex',
             justifyContent: 'flex-start',
@@ -266,7 +260,13 @@ const SidebarContent = ({
 };
 
 const Sidebar = ({ open, toggleDrawer }: SidebarProps) => {
-  const [activeMenu, setActiveMenu] = useState('dashboard');
+  const location = useLocation();
+  const [activeMenu, setActiveMenu] = useState(location.pathname);
+
+  const navigate = useNavigate();
+  const handleLogoutbtn = () => {
+    navigate('/auth/signin');
+  };
 
   return (
     <>
@@ -306,17 +306,13 @@ const Sidebar = ({ open, toggleDrawer }: SidebarProps) => {
           height: 'calc(100vh - 64px)',
           bgcolor: 'background.paper',
           zIndex: (theme) => theme.zIndex.drawer,
-          // overflowY: 'auto',
-          // '&::-webkit-scrollbar': {
-          //   width: '6px',
-          // },
-          // '&::-webkit-scrollbar-thumb': {
-          //   backgroundColor: 'rgba(255, 255, 255, 0.3)',
-          //   borderRadius: '3px',
-          // },
         }}
       >
-        <SidebarContent activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+        <SidebarContent
+          activeMenu={activeMenu}
+          setActiveMenu={setActiveMenu}
+          handleLogoutbtn={handleLogoutbtn}
+        />
       </Box>
     </>
   );

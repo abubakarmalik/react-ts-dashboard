@@ -14,6 +14,7 @@ import TaskCategoryPage from '../pages/TaskCategoryPage';
 import SettingPage from '../pages/SettingPage';
 import HelpPage from '../pages/HelpPage';
 import NotFoundPage from '../pages/NotFoundPage';
+import AddCategoryPage from '../pages/AddCategoryPage';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,6 +30,7 @@ export const router = createBrowserRouter(
         <Route path="vital-task" element={<VitalTaskPage />} />
         <Route path="my-task" element={<MyTaskPage />} />
         <Route path="task-categories" element={<TaskCategoryPage />} />
+        <Route path="task-categories/add" element={<AddCategoryPage />} />
         <Route path="settings" element={<SettingPage />} />
         <Route path="helps" element={<HelpPage />} />
       </Route>

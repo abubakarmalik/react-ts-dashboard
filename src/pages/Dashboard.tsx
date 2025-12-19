@@ -9,6 +9,7 @@ import TaskCard from '../components/ui/TaskCard';
 import cardimg3 from '../assets/images/cardimg3.png';
 import { useState } from 'react';
 import InviteModel from '../components/ui/InviteModel';
+import AddTaskModel from '../components/ui/addTaskModel';
 
 const Item = styled(Paper)(({}) => ({
   backgroundColor: theme.palette.background.default,
@@ -16,9 +17,12 @@ const Item = styled(Paper)(({}) => ({
 }));
 
 const Dashboard = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [openAddTask, setOpenAddTask] = useState<boolean>(false);
+  const handleOpenAddTask = () => setOpenAddTask(true);
+  const handleCloseAddTask = () => setOpenAddTask(false);
   return (
     <>
       <DashboardTopbar handleOpen={handleOpen} />
@@ -37,7 +41,7 @@ const Dashboard = () => {
               elevation={4}
               sx={{ bgcolor: theme.palette.background.default, height: 'auto' }}
             >
-              <TodoSection />
+              <TodoSection handleOpenAddTask={handleOpenAddTask} />
             </Item>
             <Item
               elevation={4}
@@ -95,6 +99,11 @@ const Dashboard = () => {
         </Grid>
       </Box>
       <InviteModel open={open} handleClose={handleClose} />
+      <AddTaskModel
+        open={openAddTask}
+        handleClose={handleCloseAddTask}
+        heading="Add New Task"
+      />
     </>
   );
 };

@@ -1,5 +1,4 @@
-import { Grid } from '@mui/material';
-import TopHeading from '../components/ui/TopHeading';
+import { Box, Grid, Typography } from '@mui/material';
 import { theme } from '../theme';
 import TaskCard from '../components/ui/TaskCard';
 import cardimg6 from '../assets/images/cardimg6.png';
@@ -14,84 +13,112 @@ const list1 = [
 
 const MyTaskPage = () => {
   return (
-    <Grid container spacing={2}>
-      <Grid
-        size={{ xs: 12, sm: 12, md: 12, lg: 5 }}
-        sx={{
-          height: { xs: 'auto', sm: 'auto', md: 'auto' },
-          bgcolor: theme.palette.background.default,
-          boxShadow: 4,
-          borderRadius: 4,
-        }}
-      >
-        <TopHeading heading="My Task" back="" link={false} barLength="30px" />
-
+    <>
+      <Grid container spacing={2}>
         <Grid
-          container
-          direction="column"
-          spacing={2}
-          sx={{ padding: 2, bgcolor: theme.palette.background.default }}
+          size={{ xs: 12, sm: 12, md: 12, lg: 5 }}
+          sx={{
+            height: { xs: 'auto', sm: 'auto', md: 'auto' },
+            bgcolor: theme.palette.background.default,
+            boxShadow: 4,
+            borderRadius: 4,
+          }}
         >
-          <TaskCard
-            heading="Submit Documents"
-            paragraph="Make sure to submit all the necessary docum....."
-            img={cardimg6}
-            priority={true}
+          <Grid
+            container
+            sx={{
+              justifyContent: 'space-between',
+              alignItems: { xs: 'flex-start', sm: 'center' },
+              flexDirection: { xs: 'row' },
+              gap: 1,
+              padding: 2,
+            }}
+          >
+            <Box component="div" sx={{}}>
+              <Typography
+                component="p"
+                sx={{ fontSize: { xs: '14px', sm: '16px' }, fontWeight: '600' }}
+              >
+                My Task
+              </Typography>
+              <Box
+                component="div"
+                sx={{
+                  height: '3px',
+                  width: '30px',
+                  bgcolor: theme.palette.secondary.main,
+                }}
+              ></Box>
+            </Box>
+          </Grid>
+
+          <Grid
+            container
+            direction="column"
+            spacing={2}
+            sx={{ padding: 2, bgcolor: theme.palette.background.default }}
+          >
+            <TaskCard
+              heading="Submit Documents"
+              paragraph="Make sure to submit all the necessary docum....."
+              img={cardimg6}
+              priority={true}
+              priorityText="Extreme"
+              priorityColor={theme.palette.error.main}
+              status="Not Started"
+              statusColor={theme.palette.error.main}
+              disabledText="Created on: 19/06/2023"
+              selected={true}
+            />
+            <TaskCard
+              heading="Complete assignments"
+              paragraph="The assignments must be completed to pass final year...."
+              img={cardimg7}
+              priority={true}
+              priorityText="Moderate"
+              priorityColor={theme.palette.info.light}
+              status="In Progress"
+              statusColor={theme.palette.info.dark}
+              disabledText="Created on: 19/06/2023"
+              selected={false}
+            />
+          </Grid>
+        </Grid>
+        <Grid
+          size={{ xs: 12, sm: 12, md: 12, lg: 7 }}
+          sx={{
+            height: { xs: 'auto', sm: 'auto', md: 'auto' },
+            bgcolor: theme.palette.background.default,
+            boxShadow: 4,
+            padding: 2,
+            borderRadius: 4,
+          }}
+        >
+          <TaskCardDetails
+            title="Submit Documents"
             priorityText="Extreme"
             priorityColor={theme.palette.error.main}
-            status="Not Started"
+            statusText="Not Started"
             statusColor={theme.palette.error.main}
+            img={cardimg6}
             disabledText="Created on: 19/06/2023"
-            selected={true}
-          />
-          <TaskCard
-            heading="Complete assignments"
-            paragraph="The assignments must be completed to pass final year...."
-            img={cardimg7}
-            priority={true}
-            priorityText="Moderate"
-            priorityColor={theme.palette.info.light}
-            status="In Progress"
-            statusColor={theme.palette.info.dark}
-            disabledText="Created on: 19/06/2023"
-            selected={false}
+            h1="Task Title:"
+            p1="Document Submission."
+            h2="Objective:"
+            p2="To submit required documents for something important"
+            h3="Task Description:"
+            p3="Review the list of documents required for submission and ensure all necessary documents are ready. Organize the documents accordingly and scan them if physical copies need to be submitted digitally. Rename the scanned files appropriately for easy identification and verify the accepted file formats. Upload the documents securely to the designated platform, double-check for accuracy, and obtain confirmation of successful submission. Follow up if necessary to ensure proper processing."
+            h4="Deadline for Submission:"
+            p4="End of Day"
+            list1Heading="Additional Notes:"
+            decimal={false}
+            list1={list1}
+            vital={false}
+            back={false}
           />
         </Grid>
       </Grid>
-      <Grid
-        size={{ xs: 12, sm: 12, md: 12, lg: 7 }}
-        sx={{
-          height: { xs: 'auto', sm: 'auto', md: 'auto' },
-          bgcolor: theme.palette.background.default,
-          boxShadow: 4,
-          padding: 2,
-          borderRadius: 4,
-        }}
-      >
-        <TaskCardDetails
-          title="Submit Documents"
-          priorityText="Extreme"
-          priorityColor={theme.palette.error.main}
-          statusText="Not Started"
-          statusColor={theme.palette.error.main}
-          img={cardimg6}
-          disabledText="Created on: 19/06/2023"
-          h1="Task Title:"
-          p1="Document Submission."
-          h2="Objective:"
-          p2="To submit required documents for something important"
-          h3="Task Description:"
-          p3="Review the list of documents required for submission and ensure all necessary documents are ready. Organize the documents accordingly and scan them if physical copies need to be submitted digitally. Rename the scanned files appropriately for easy identification and verify the accepted file formats. Upload the documents securely to the designated platform, double-check for accuracy, and obtain confirmation of successful submission. Follow up if necessary to ensure proper processing."
-          h4="Deadline for Submission:"
-          p4="End of Day"
-          list1Heading="Additional Notes:"
-          decimal={false}
-          list1={list1}
-          vital={false}
-          back={false}
-        />
-      </Grid>
-    </Grid>
+    </>
   );
 };
 

@@ -7,7 +7,11 @@ import TaskCard from './ui/TaskCard';
 import cardimg1 from '../assets/images/cardimg1.png';
 import cardimg2 from '../assets/images/cardimg2.png';
 
-const TodoSection = () => {
+interface TodoSectionPropsTypes {
+  handleOpenAddTask: () => void;
+}
+
+const TodoSection = ({ handleOpenAddTask }: TodoSectionPropsTypes) => {
   return (
     <Box component="div" sx={{ padding: 2 }}>
       <Box
@@ -41,10 +45,12 @@ const TodoSection = () => {
           />
           <Typography
             component="p"
+            onClick={handleOpenAddTask}
             sx={{
               color: theme.palette.text.disabled,
               fontSize: '12px',
               fontWeight: '400',
+              cursor: 'pointer',
             }}
           >
             Add Task

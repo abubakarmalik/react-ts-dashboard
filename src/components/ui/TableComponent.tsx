@@ -20,6 +20,7 @@ import { theme } from '../../theme';
 interface TablePropsTypes {
   heading: string;
   buttonAction: () => void;
+  editAction: () => void;
   buttonText: string;
   list: string[];
 }
@@ -27,6 +28,7 @@ interface TablePropsTypes {
 const TableComponent = ({
   heading,
   buttonAction,
+  editAction,
   buttonText,
   list,
 }: TablePropsTypes) => {
@@ -38,7 +40,7 @@ const TableComponent = ({
         sx={{
           justifyContent: 'space-between',
           alignItems: { xs: 'flex-start', sm: 'center' },
-          px: 2,
+          px: 4,
           py: 1.5,
         }}
       >
@@ -56,16 +58,15 @@ const TableComponent = ({
           variant="text"
           startIcon={<AddIcon />}
           sx={{
-            color: 'text.secondary',
+            color: theme.palette.text.disabled,
             fontWeight: 600,
-            '& .MuiButton-startIcon': { color: 'secondary.main' },
+            '& .MuiButton-startIcon': { color: theme.palette.secondary.main },
           }}
         >
           {buttonText}
         </Button>
       </Grid>
-      <Box component="div" sx={{ padding: 4 }}>
-        {/* Table wrapper (THIS controls scroll on xs) */}
+      <Box component="div" sx={{ paddingX: 4, paddingY: 1 }}>
         <TableContainer
           component={Paper}
           elevation={0}
@@ -128,7 +129,7 @@ const TableComponent = ({
                   borderRight: 'none',
                 },
                 '& tr:last-child td': {
-                  borderBottom: 'none', // clean bottom
+                  borderBottom: 'none',
                 },
               }}
             >
@@ -151,6 +152,7 @@ const TableComponent = ({
                       sx={{ flexWrap: 'nowrap' }}
                     >
                       <Button
+                        onClick={editAction}
                         variant="contained"
                         startIcon={<EditDocumentIcon />}
                         sx={{

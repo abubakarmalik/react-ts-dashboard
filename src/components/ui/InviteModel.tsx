@@ -24,16 +24,17 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: {
-    xs: '92%',
+    xs: '90vw',
     sm: 500,
     md: 600,
   },
-  maxHeight: '90vh',
-  overflow: 'auto',
+
   bgcolor: 'background.default',
   boxShadow: 24,
   p: { xs: 2, sm: 3, md: 4 },
   borderRadius: 2,
+  height: '80vh',
+  overflow: 'auto',
 };
 
 interface InviteModelType {

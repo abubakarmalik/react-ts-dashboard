@@ -35,7 +35,6 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
     },
   },
 
-  // text & placeholder styling
   '& .MuiOutlinedInput-input': {
     color: theme.palette.text.primary,
 
@@ -63,7 +62,10 @@ const Register = () => {
         padding: 3,
       }}
     >
-      <Grid size={7}>
+      <Grid
+        size={{ xs: 12, md: 7 }}
+        sx={{ display: { xs: 'none', md: 'block' } }}
+      >
         <Box
           component="img"
           alt="login-image"
@@ -71,7 +73,7 @@ const Register = () => {
           sx={{ height: '500px', width: 'auto' }}
         />
       </Grid>
-      <Grid size={5}>
+      <Grid size={{ xs: 12, md: 5 }}>
         <Typography
           component="h4"
           sx={{ fontWeight: '700', fontSize: '36px', mb: 1 }}
