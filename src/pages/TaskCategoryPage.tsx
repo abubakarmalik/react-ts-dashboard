@@ -39,7 +39,7 @@ const TaskCategoryPage = () => {
           heading="Task Staus"
           buttonAction={() => {}}
           buttonText="Ass Task Status"
-          list={[]}
+          list={['Completed', 'In Progress', 'Not Started']}
         />
       </Grid>
     </Grid>
