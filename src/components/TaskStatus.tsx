@@ -1,9 +1,9 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography, useTheme } from '@mui/material';
 import book from '../assets/icons/Book.png';
-import { theme } from '../theme';
 import ProgressBar from './ui/ProgressBar';
 
 const TaskStatus = () => {
+  const theme = useTheme();
   return (
     <Box component="div" sx={{ padding: 2 }}>
       <Box component="div" sx={{ display: 'flex' }}>

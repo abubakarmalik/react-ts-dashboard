@@ -1,6 +1,5 @@
-import { Box, Grid, Paper } from '@mui/material';
+import { Box, Grid, Paper, useTheme } from '@mui/material';
 import DashboardTopbar from '../components/DashboardTopbar';
-import { theme } from '../theme';
 import styled from '@emotion/styled';
 import TodoSection from '../components/TodoSection';
 import TaskStatus from '../components/TaskStatus';
@@ -12,11 +11,12 @@ import InviteModel from '../components/ui/InviteModel';
 import AddTaskModel from '../components/ui/AddTaskModel';
 
 const Item = styled(Paper)(({}) => ({
-  backgroundColor: theme.palette.background.default,
+  backgroundColor: 'background.default',
   padding: 1,
 }));
 
 const Dashboard = () => {
+  const theme = useTheme();
   const [open, setOpen] = useState<boolean>(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

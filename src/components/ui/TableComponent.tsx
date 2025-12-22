@@ -11,11 +11,11 @@ import {
   TableBody,
   Paper,
   Stack,
+  useTheme,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import EditDocumentIcon from '@mui/icons-material/EditDocument';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { theme } from '../../theme';
 
 interface TablePropsTypes {
   heading: string;
@@ -32,6 +32,7 @@ const TableComponent = ({
   buttonText,
   list,
 }: TablePropsTypes) => {
+  const theme = useTheme();
   return (
     <Box>
       {/* Top header */}

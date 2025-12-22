@@ -13,8 +13,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { theme } from '../theme';
+import { useTheme } from '@mui/material/styles';
+import { useOutletContext } from 'react-router-dom';
 import { FormControlLabel, Switch } from '@mui/material';
+import { useThemeMode } from '../theme/ThemeModeContext';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -125,6 +127,9 @@ type DrawerProps = {
 };
 
 export default function Navbar({ toggleDrawer }: DrawerProps) {
+  const theme = useTheme();
+  const { mode, toggleMode } = useThemeMode();
+
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
 
@@ -159,7 +164,13 @@ export default function Navbar({ toggleDrawer }: DrawerProps) {
     >
       <MenuItem>
         <FormControlLabel
-          control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+          control={
+            <MaterialUISwitch
+              sx={{ m: 1 }}
+              onChange={toggleMode}
+              checked={mode === 'dark'}
+            />
+          }
           label=""
         />
       </MenuItem>
@@ -236,7 +247,13 @@ export default function Navbar({ toggleDrawer }: DrawerProps) {
           }}
         >
           <FormControlLabel
-            control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+            control={
+              <MaterialUISwitch
+                sx={{ m: 1 }}
+                onChange={toggleMode}
+                checked={mode === 'dark'}
+              />
+            }
             label=""
           />
         </Box>

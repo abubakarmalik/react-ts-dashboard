@@ -1,8 +1,8 @@
-import { Grid } from '@mui/material';
-import { theme } from '../theme';
+import { Grid, useTheme } from '@mui/material';
 import AccordionUsage from '../components/ui/AccordionUsage';
 
 const SettingPage = () => {
+  const theme = useTheme();
   return (
     <Grid container spacing={2} sx={{ mt: 1 }}>
       <Grid

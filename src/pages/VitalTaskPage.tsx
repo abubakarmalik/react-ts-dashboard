@@ -1,6 +1,5 @@
-import { Grid } from '@mui/material';
+import { Grid, useTheme } from '@mui/material';
 import TopHeading from '../components/ui/TopHeading';
-import { theme } from '../theme';
 import TaskCard from '../components/ui/TaskCard';
 import cardimg4 from '../assets/images/cardimg4.png';
 import cardimg5 from '../assets/images/cardimg5.png';
@@ -16,6 +15,7 @@ const list1 = [
 ];
 
 const VitalTaskPage = () => {
+  const theme = useTheme();
   return (
     <Grid container spacing={2} sx={{ mt: 1 }}>
       <Grid

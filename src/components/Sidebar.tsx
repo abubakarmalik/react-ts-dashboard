@@ -9,6 +9,7 @@ import {
   ListItemText,
   Button,
   Drawer,
+  useTheme,
 } from '@mui/material';
 import { useState } from 'react';
 import ellipse from '../assets/images/Ellipse.png';
@@ -19,7 +20,6 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import HelpIcon from '@mui/icons-material/Help';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { theme } from '../theme';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 interface MenuItem {
@@ -40,6 +40,7 @@ const SidebarContent = ({
   isDrawer = false,
   handleLogoutbtn,
 }: any) => {
+  const theme = useTheme();
   const menuItems: MenuItem[] = [
     {
       id: 'dashboard',

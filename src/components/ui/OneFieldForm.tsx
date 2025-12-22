@@ -7,8 +7,8 @@ import {
   RadioGroup,
   TextField,
   Typography,
+  useTheme,
 } from '@mui/material';
-import { theme } from '../../theme';
 
 interface OneFieldFormPropsType {
   title: string;
@@ -17,6 +17,7 @@ interface OneFieldFormPropsType {
 }
 
 const OneFieldForm = ({ title, buttonText, radio }: OneFieldFormPropsType) => {
+  const theme = useTheme();
   return (
     <Box component="div">
       <Typography

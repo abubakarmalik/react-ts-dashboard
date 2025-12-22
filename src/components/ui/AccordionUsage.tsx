@@ -3,12 +3,12 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { theme } from '../../theme';
-import { Box } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import AccountInfo from './AccountInfo';
 import ChangePassword from './ChangePassword';
 
 export default function AccordionUsage() {
+  const theme = useTheme();
   return (
     <>
       <Accordion

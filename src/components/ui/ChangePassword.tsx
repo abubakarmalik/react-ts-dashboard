@@ -1,8 +1,15 @@
-import { Box, Button, Grid, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import Ellipse from '../../assets/images/Ellipse.png';
-import { theme } from '../../theme';
 
 const ChangePassword = () => {
+  const theme = useTheme();
   return (
     <Box>
       <Grid

@@ -1,5 +1,4 @@
-import { Box, Typography } from '@mui/material';
-import { theme } from '../../theme';
+import { Box, Typography, useTheme } from '@mui/material';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
@@ -28,6 +27,7 @@ const TaskCard = ({
   disabledText,
   selected,
 }: TaskCardProps) => {
+  const theme = useTheme();
   return (
     <Box
       component="div"

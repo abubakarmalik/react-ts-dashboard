@@ -1,11 +1,11 @@
-import { Box, Grid, Typography } from '@mui/material';
-import { theme } from '../theme';
+import { Box, Grid, Typography, useTheme } from '@mui/material';
 import book from '../assets/icons/Book.png';
 import TaskCard from './ui/TaskCard';
 import cardimg4 from '../assets/images/cardimg4.png';
 import cardimg3 from '../assets/images/cardimg3.png';
 
 const CompleteTask = () => {
+  const theme = useTheme();
   return (
     <Box component="div" sx={{ padding: 2 }}>
       <Box component="div" sx={{ display: 'flex' }}>

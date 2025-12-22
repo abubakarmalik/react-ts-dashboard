@@ -3,9 +3,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import { Link as MuiLink, Grid } from '@mui/material';
+import { Link as MuiLink, Grid, useTheme } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { theme } from '../../theme';
 import OneFieldForm from './OneFieldForm';
 
 const style = {
@@ -33,6 +32,7 @@ export default function StatusModel({
   heading,
   title,
 }: StatusModelType) {
+  const theme = useTheme();
   return (
     <Modal
       aria-labelledby="transition-modal-title"

@@ -1,5 +1,4 @@
-import { Box, Button, Divider, Grid } from '@mui/material';
-import { theme } from '../theme';
+import { Box, Button, Divider, Grid, useTheme } from '@mui/material';
 import TopHeading from '../components/ui/TopHeading';
 import TableComponent from '../components/ui/TableComponent';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +6,7 @@ import { useState } from 'react';
 import StatusModel from '../components/ui/StatusModel';
 
 const TaskCategoryPage = () => {
+  const theme = useTheme();
   const [openTaskStatus, setOpenTaskStatus] = useState<boolean>(false);
   const handleOpenTaskStatus = () => setOpenTaskStatus(true);
   const handleCloseTaskStatus = () => setOpenTaskStatus(false);
