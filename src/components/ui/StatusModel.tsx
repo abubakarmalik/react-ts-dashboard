@@ -89,7 +89,7 @@ export default function StatusModel({
               border: '1px solid #cacaca',
             }}
           >
-            <OneFieldForm title={title} buttonText="Create" />
+            <OneFieldForm title={title} buttonText="Create" radio={false} />
           </Box>
         </Box>
       </Fade>

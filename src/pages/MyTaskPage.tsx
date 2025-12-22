@@ -1,9 +1,10 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Slider, Typography } from '@mui/material';
 import { theme } from '../theme';
 import TaskCard from '../components/ui/TaskCard';
 import cardimg6 from '../assets/images/cardimg6.png';
 import cardimg7 from '../assets/images/cardimg7.png';
 import TaskCardDetails from '../components/ui/TaskCardDetails';
+import { useState } from 'react';
 
 const list1 = [
   'Ensure that the documents are authentic and up-to-date.',
@@ -12,6 +13,15 @@ const list1 = [
 ];
 
 const MyTaskPage = () => {
+  function valuetext(value: number) {
+    return `${value}`;
+  }
+  const [value, setValue] = useState<number[]>([7, 14]);
+
+  const handleChange = (event: Event, newValue: number[]) => {
+    setValue(newValue);
+  };
+
   return (
     <>
       <Grid container spacing={2} sx={{ mt: 1 }}>
@@ -58,6 +68,24 @@ const MyTaskPage = () => {
             spacing={2}
             sx={{ padding: 2, bgcolor: theme.palette.background.default }}
           >
+            <Typography
+              component="p"
+              sx={{ fontSize: { xs: '14px', sm: '16px' }, fontWeight: '500' }}
+            >
+              Filter Tasks by date
+            </Typography>
+            <Box component="div" sx={{ paddingX: 2 }}>
+              <Slider
+                getAriaLabel={() => 'Temperature range'}
+                value={value}
+                onChange={handleChange}
+                valueLabelDisplay="auto"
+                getAriaValueText={valuetext}
+                min={1}
+                max={30}
+                color="secondary"
+              />
+            </Box>
             <TaskCard
               heading="Submit Documents"
               paragraph="Make sure to submit all the necessary docum....."
