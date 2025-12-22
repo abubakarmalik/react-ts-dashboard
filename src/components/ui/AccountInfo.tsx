@@ -1,6 +1,25 @@
-import { Box, Button, Grid, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  Autocomplete,
+  ButtonGroup,
+} from '@mui/material';
 import Ellipse from '../../assets/images/Ellipse.png';
 import { theme } from '../../theme';
+interface AutocompleteOption {
+  label: string;
+}
+
+const AutocompleteOption = [
+  { label: 'Frontend Developer' },
+  { label: 'Backend Developer' },
+  { label: 'Android Developer' },
+  { label: 'IOS Developer' },
+  { label: 'HR Manager' },
+];
 
 const AccountInfo = () => {
   return (
@@ -199,26 +218,27 @@ const AccountInfo = () => {
             >
               Position
             </Typography>
-            <TextField
-              label=""
-              id="fullWidth"
-              type="email"
-              placeholder=""
-              required
-              autoFocus
+            <Autocomplete
+              disablePortal
+              options={AutocompleteOption}
               sx={{
-                '& .MuiOutlinedInput-root': {
+                width: { xs: 220, sm: 400, md: 500 },
+                '& .MuiAutocomplete-inputRoot	': {
+                  height: 40,
                   borderRadius: 2,
-                  width: { xs: 220, sm: 400, md: 500 },
-                  height: { xs: 40 },
-                  color: theme.palette.text.primary,
-                },
-                '& .Mui-focused': {
-                  borderColor: theme.palette.secondary.main,
-                  color: theme.palette.text.primary,
                 },
               }}
+              slotProps={{
+                paper: {
+                  sx: {
+                    bgcolor: theme.palette.background.default,
+                    borderRadius: 2,
+                  },
+                },
+              }}
+              renderInput={(params) => <TextField {...params} label="" />}
             />
+
             <Grid
               container
               direction="row"

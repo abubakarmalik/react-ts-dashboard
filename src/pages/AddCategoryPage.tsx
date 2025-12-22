@@ -32,7 +32,11 @@ const AddCategoryPage = () => {
             borderRadius: 4,
           }}
         >
-          <OneFieldForm title="Category Name" buttonText="Create" />
+          <OneFieldForm
+            title="Category Name"
+            buttonText="Create"
+            radio={true}
+          />
         </Grid>
       </Grid>
     </Grid>

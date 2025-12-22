@@ -1,8 +1,11 @@
-import { Box } from '@mui/material';
+import { Box, Fab } from '@mui/material';
 import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
+import AddIcon from '@mui/icons-material/Add';
 import Sidebar from '../components/Sidebar';
+import { theme } from '../theme';
+import AddTaskModel from '../components/ui/AddTaskModel';
 
 const DashboardLayout = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -10,6 +13,10 @@ const DashboardLayout = () => {
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(!open);
   };
+
+  const [openAddTask, setOpenAddTask] = useState<boolean>(false);
+  const handleOpenAddTask = () => setOpenAddTask(true);
+  const handleCloseAddTask = () => setOpenAddTask(false);
 
   return (
     <Box
@@ -38,7 +45,26 @@ const DashboardLayout = () => {
       >
         <Box sx={{ p: { xs: 1, md: 3 }, mt: 1 }}>
           <Outlet />
+          <Box
+            component="div"
+            sx={{ position: 'fixed', bottom: 20, right: 20 }}
+          >
+            <Fab
+              size="medium"
+              color="primary"
+              sx={{ color: theme.palette.background.default }}
+              aria-label="add"
+              onClick={handleOpenAddTask}
+            >
+              <AddIcon />
+            </Fab>
+          </Box>
         </Box>
+        <AddTaskModel
+          open={openAddTask}
+          handleClose={handleCloseAddTask}
+          heading="Add New Task"
+        />
       </Box>
     </Box>
   );

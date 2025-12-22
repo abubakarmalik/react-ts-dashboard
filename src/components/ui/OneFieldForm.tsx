@@ -1,12 +1,22 @@
-import { Box, Button, Grid, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  FormControlLabel,
+  Grid,
+  Radio,
+  RadioGroup,
+  TextField,
+  Typography,
+} from '@mui/material';
 import { theme } from '../../theme';
 
 interface OneFieldFormPropsType {
   title: string;
   buttonText: string;
+  radio: boolean;
 }
 
-const OneFieldForm = ({ title, buttonText }: OneFieldFormPropsType) => {
+const OneFieldForm = ({ title, buttonText, radio }: OneFieldFormPropsType) => {
   return (
     <Box component="div">
       <Typography
@@ -40,6 +50,38 @@ const OneFieldForm = ({ title, buttonText }: OneFieldFormPropsType) => {
           },
         }}
       />
+      {radio && (
+        <>
+          <Typography
+            component="p"
+            sx={{
+              fontWeight: '600',
+              fontSize: { xs: '12px', sm: '14px' },
+              ml: 1,
+              mt: 1,
+            }}
+          >
+            Status
+          </Typography>
+          <RadioGroup
+            row
+            aria-labelledby="demo-row-radio-buttons-group-label"
+            name="row-radio-buttons-group"
+          >
+            <FormControlLabel
+              value="female"
+              control={<Radio color="secondary" />}
+              label="Draft"
+            />
+            <FormControlLabel
+              value="male"
+              control={<Radio color="secondary" />}
+              label="Publish"
+            />
+          </RadioGroup>
+        </>
+      )}
+
       <Grid
         container
         direction="row"
