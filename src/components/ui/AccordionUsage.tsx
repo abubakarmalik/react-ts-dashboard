@@ -13,8 +13,12 @@ export default function AccordionUsage() {
     <>
       <Accordion
         defaultExpanded
+        elevation={0}
         sx={{
-          '&.MuiAccordion-root': { bgcolor: theme.palette.background.default },
+          '&.MuiAccordion-root': {
+            bgcolor: theme.palette.background.default,
+            borderRadius: 4,
+          },
         }}
       >
         <AccordionSummary
@@ -47,8 +51,12 @@ export default function AccordionUsage() {
         </AccordionDetails>
       </Accordion>
       <Accordion
+        elevation={0}
         sx={{
-          '&.MuiAccordion-root': { bgcolor: theme.palette.background.default },
+          '&.MuiAccordion-root': {
+            bgcolor: theme.palette.background.default,
+            borderRadius: 4,
+          },
         }}
       >
         <AccordionSummary

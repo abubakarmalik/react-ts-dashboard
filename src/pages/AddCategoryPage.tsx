@@ -5,7 +5,7 @@ import OneFieldForm from '../components/ui/OneFieldForm';
 
 const AddCategoryPage = () => {
   return (
-    <Grid container spacing={1} sx={{ paddingY: 4 }}>
+    <Grid container spacing={1} sx={{ mt: 1 }}>
       <Grid
         size={{ xs: 12 }}
         sx={{

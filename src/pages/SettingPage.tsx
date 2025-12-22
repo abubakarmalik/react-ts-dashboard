@@ -4,7 +4,7 @@ import AccordionUsage from '../components/ui/AccordionUsage';
 
 const SettingPage = () => {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={{ mt: 1 }}>
       <Grid
         size={{ xs: 12 }}
         sx={{
