@@ -1,5 +1,5 @@
-import { Box, Grid, Slider, Typography } from '@mui/material';
-import { theme } from '../theme';
+import { Box, Grid, Slider, Typography, useTheme } from '@mui/material';
+
 import TaskCard from '../components/ui/TaskCard';
 import cardimg6 from '../assets/images/cardimg6.png';
 import cardimg7 from '../assets/images/cardimg7.png';
@@ -21,7 +21,7 @@ const MyTaskPage = () => {
   const handleChange = (event: Event, newValue: number[]) => {
     setValue(newValue);
   };
-
+  const theme = useTheme();
   return (
     <>
       <Grid container spacing={2} sx={{ mt: 1 }}>

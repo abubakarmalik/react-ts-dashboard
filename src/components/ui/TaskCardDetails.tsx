@@ -6,8 +6,8 @@ import {
   ListItem,
   ListItemText,
   IconButton,
+  useTheme,
 } from '@mui/material';
-import { theme } from '../../theme';
 import styled from '@emotion/styled';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditDocumentIcon from '@mui/icons-material/EditDocument';
@@ -35,7 +35,7 @@ interface TaskCardDetailsPropsType {
   back: boolean;
 }
 
-const RoundIconBtn = styled(IconButton)(({}) => ({
+const RoundIconBtn = styled(IconButton)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   color: '#fff',
   width: 30,
@@ -68,6 +68,7 @@ const TaskCardDetails = ({
   back,
   vital,
 }: TaskCardDetailsPropsType) => {
+  const theme = useTheme();
   return (
     <Box>
       {/* Top Card Head */}

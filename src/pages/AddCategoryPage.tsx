@@ -1,9 +1,9 @@
-import { Grid } from '@mui/material';
-import { theme } from '../theme';
+import { Grid, useTheme } from '@mui/material';
 import TopHeading from '../components/ui/TopHeading';
 import OneFieldForm from '../components/ui/OneFieldForm';
 
 const AddCategoryPage = () => {
+  const theme = useTheme();
   return (
     <Grid container spacing={1} sx={{ mt: 1 }}>
       <Grid

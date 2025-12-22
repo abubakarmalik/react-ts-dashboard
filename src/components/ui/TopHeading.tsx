@@ -1,5 +1,10 @@
-import { Box, Grid, Typography, Link as MuiLink } from '@mui/material';
-import { theme } from '../../theme';
+import {
+  Box,
+  Grid,
+  Typography,
+  Link as MuiLink,
+  useTheme,
+} from '@mui/material';
 import { Link } from 'react-router-dom';
 interface TopHeadingProps {
   heading: string;
@@ -9,6 +14,7 @@ interface TopHeadingProps {
 }
 
 const TopHeading = ({ heading, back, link, barLength }: TopHeadingProps) => {
+  const theme = useTheme();
   return (
     <Grid
       container

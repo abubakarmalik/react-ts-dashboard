@@ -1,13 +1,13 @@
-import { Box, Fab } from '@mui/material';
+import { Box, Fab, useTheme } from '@mui/material';
 import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import Sidebar from '../components/Sidebar';
-import { theme } from '../theme';
 import AddTaskModel from '../components/ui/AddTaskModel';
 
 const DashboardLayout = () => {
+  const theme = useTheme();
   const [open, setOpen] = useState<boolean>(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {

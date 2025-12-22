@@ -1,8 +1,7 @@
-import { Box } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import CircleIcon from '@mui/icons-material/Circle';
-import { theme } from '../../theme';
 
 interface ProgressBarPropsType {
   percentage: number;
@@ -11,6 +10,7 @@ interface ProgressBarPropsType {
 }
 
 const ProgressBar = ({ percentage, color, status }: ProgressBarPropsType) => {
+  const theme = useTheme();
   return (
     <Box component="div" sx={{ textAlign: 'center', p: 2 }}>
       <CircularProgressbar

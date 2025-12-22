@@ -9,9 +9,9 @@ import {
   TextField,
   Button,
   Checkbox,
+  useTheme,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { theme } from '../../theme';
 import { DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
@@ -47,7 +47,7 @@ export default function AddTaskModel({
   heading,
 }: AddTaskModelType) {
   const label = { slotProps: { input: { 'aria-label': 'Checkbox demo' } } };
-
+  const theme = useTheme();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleBrowseClick = () => {

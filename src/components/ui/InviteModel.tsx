@@ -9,9 +9,9 @@ import {
   TextField,
   Button,
   Avatar,
+  useTheme,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { theme } from '../../theme';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import avatar1 from '../../assets/images/invite-avatar1.png';
 import avatar2 from '../../assets/images/invite-avatar2.png';
@@ -60,6 +60,7 @@ const inviteRow = [
 ];
 
 export default function InviteModel({ open, handleClose }: InviteModelType) {
+  const theme = useTheme();
   return (
     <Modal
       aria-labelledby="transition-modal-title"

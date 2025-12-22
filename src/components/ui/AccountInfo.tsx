@@ -5,10 +5,9 @@ import {
   TextField,
   Typography,
   Autocomplete,
-  ButtonGroup,
+  useTheme,
 } from '@mui/material';
 import Ellipse from '../../assets/images/Ellipse.png';
-import { theme } from '../../theme';
 interface AutocompleteOption {
   label: string;
 }
@@ -22,6 +21,7 @@ const AutocompleteOption = [
 ];
 
 const AccountInfo = () => {
+  const theme = useTheme();
   return (
     <Box>
       <Grid
