@@ -26,12 +26,13 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 'auto',
+  width: '70vw',
   bgcolor: 'background.default',
   boxShadow: 24,
   p: 4,
   height: '80vh',
   overflow: 'scroll',
+  borderRadius: 4,
 };
 
 interface AddTaskModelType {
@@ -140,7 +141,7 @@ export default function AddTaskModel({
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     borderRadius: 2,
-                    width: { xs: 220, sm: 400, md: 500 },
+                    width: { xs: 220, sm: 400, md: 600 },
                     height: { xs: 40 },
                     color: theme.palette.text.primary,
                   },
@@ -163,8 +164,22 @@ export default function AddTaskModel({
                 Date
               </Typography>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoItem label="Responsive variant">
-                  <DatePicker defaultValue={dayjs('2022-04-17')} />
+                <DemoItem label="">
+                  <DatePicker
+                    defaultValue={dayjs('2025-12-22')}
+                    slotProps={{
+                      textField: {
+                        InputProps: {
+                          sx: {
+                            width: { xs: 220, sm: 400, md: 600 },
+                            color: theme.palette.text.primary,
+                            borderRadius: 2,
+                            height: 45,
+                          },
+                        },
+                      },
+                    }}
+                  />
                 </DemoItem>
               </LocalizationProvider>
               <Typography
@@ -226,7 +241,7 @@ export default function AddTaskModel({
                 </Box>
               </Box>
               <Grid container spacing={2}>
-                <Grid size={{ xs: 12, md: 7 }}>
+                <Grid size={{ xs: 12, md: 8 }}>
                   <Typography
                     component="p"
                     sx={{
@@ -249,7 +264,7 @@ export default function AddTaskModel({
                     fullWidth
                   />
                 </Grid>
-                <Grid size={{ xs: 8, md: 5 }}>
+                <Grid size={{ xs: 8, md: 4 }}>
                   <Typography
                     component="p"
                     sx={{

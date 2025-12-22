@@ -17,6 +17,7 @@ const style = {
   bgcolor: 'background.default',
   boxShadow: 24,
   p: 4,
+  borderRadius: 4,
 };
 
 interface StatusModelType {

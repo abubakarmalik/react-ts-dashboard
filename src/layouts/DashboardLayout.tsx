@@ -36,7 +36,7 @@ const DashboardLayout = () => {
           minHeight: 'calc(100vh - 64px)',
         }}
       >
-        <Box sx={{ p: { xs: 1, md: 3 } }}>
+        <Box sx={{ p: { xs: 1, md: 3 }, mt: 1 }}>
           <Outlet />
         </Box>
       </Box>

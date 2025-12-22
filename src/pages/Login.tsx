@@ -15,7 +15,7 @@ import loginImg from '../assets/images/login-img.png';
 import fb from '../assets/icons/fb.png';
 import google from '../assets/icons/google.png';
 import x from '../assets/icons/x.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
   '& .MuiOutlinedInput-root': {
@@ -55,6 +55,10 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 }));
 
 const Login = () => {
+  const navigate = useNavigate();
+  const handleLoninbtn = () => {
+    navigate('/');
+  };
   return (
     <Grid
       container
@@ -115,12 +119,13 @@ const Login = () => {
           />
           <Button
             variant="contained"
-            type="submit"
+            type="button"
             sx={{
               width: '130px',
               color: 'background.default',
               ':hover': 'primary.light',
             }}
+            onClick={handleLoninbtn}
           >
             Login
           </Button>

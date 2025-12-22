@@ -32,7 +32,7 @@ const style = {
   bgcolor: 'background.default',
   boxShadow: 24,
   p: { xs: 2, sm: 3, md: 4 },
-  borderRadius: 2,
+  borderRadius: 4,
   height: '80vh',
   overflow: 'auto',
 };

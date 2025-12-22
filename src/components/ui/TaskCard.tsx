@@ -33,7 +33,7 @@ const TaskCard = ({
       component="div"
       sx={{
         border: '1px solid #cacaca',
-        borderRadius: 3,
+        borderRadius: 4,
         padding: 1,
         bgcolor: selected ? '#A1A3AB2B' : '',
       }}

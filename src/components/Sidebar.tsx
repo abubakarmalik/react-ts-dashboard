@@ -96,19 +96,19 @@ const SidebarContent = ({
       <Box
         sx={{
           bgcolor: 'background.default',
-          height: '60px',
+          height: '40px',
           position: 'relative',
         }}
       >
         {/* Avatar positioned to overlap both sections */}
         <Avatar
           sx={{
-            width: 80,
-            height: 80,
-            border: '4px solid white',
+            width: 60,
+            height: 60,
+            border: '2px solid white',
             boxShadow: 3,
             position: 'absolute',
-            top: '10px',
+            top: '7px',
             left: '50%',
             transform: 'translateX(-50%)',
             zIndex: 10,
@@ -126,7 +126,7 @@ const SidebarContent = ({
           flexDirection: 'column',
           color: 'white',
           flex: 1,
-          pt: '50px',
+          pt: '40px',
           px: 2,
           pb: 2,
           overflowY: 'auto',

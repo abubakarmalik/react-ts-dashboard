@@ -9,7 +9,7 @@ import TaskCard from '../components/ui/TaskCard';
 import cardimg3 from '../assets/images/cardimg3.png';
 import { useState } from 'react';
 import InviteModel from '../components/ui/InviteModel';
-import AddTaskModel from '../components/ui/addTaskModel';
+import AddTaskModel from '../components/ui/AddTaskModel';
 
 const Item = styled(Paper)(({}) => ({
   backgroundColor: theme.palette.background.default,
@@ -32,14 +32,17 @@ const Dashboard = () => {
           mt: 2,
           borderRadius: '3px',
           border: '1px solid #cacaca',
-          height: 'auto',
         }}
       >
         <Grid container spacing={2}>
-          <Grid size={{ xs: 12, sm: 12, md: 6 }}>
+          <Grid size={{ xs: 12, sm: 12, md: 6 }} sx={{ height: 'auto' }}>
             <Item
               elevation={4}
-              sx={{ bgcolor: theme.palette.background.default, height: 'auto' }}
+              sx={{
+                bgcolor: theme.palette.background.default,
+                height: 'auto',
+                borderRadius: 4,
+              }}
             >
               <TodoSection handleOpenAddTask={handleOpenAddTask} />
             </Item>
@@ -47,15 +50,16 @@ const Dashboard = () => {
               elevation={4}
               sx={{
                 bgcolor: theme.palette.background.default,
-                padding: 2,
                 height: 'auto',
+                borderRadius: 4,
+                mt: 2,
               }}
             >
-              <Grid
-                container
-                direction="column"
-                spacing={2}
-                sx={{ padding: 4, bgcolor: theme.palette.background.default }}
+              <Box
+                component="div"
+                sx={{
+                  padding: 4,
+                }}
               >
                 <TaskCard
                   heading="Presentation on Final Product"
@@ -69,32 +73,31 @@ const Dashboard = () => {
                   disabledText="Created on: 19/06/2023"
                   selected={false}
                 />
-              </Grid>
+              </Box>
             </Item>
           </Grid>
-          <Grid container spacing={2} size={{ xs: 12, sm: 12, md: 6 }}>
-            <Grid size={{ xs: 12 }}>
-              <Item
-                elevation={4}
-                sx={{
-                  bgcolor: theme.palette.background.default,
-                  height: 'auto',
-                }}
-              >
-                <TaskStatus />
-              </Item>
-            </Grid>
-            <Grid size={{ xs: 12 }}>
-              <Item
-                elevation={4}
-                sx={{
-                  bgcolor: theme.palette.background.default,
-                  height: 'auto',
-                }}
-              >
-                <CompleteTask />
-              </Item>
-            </Grid>
+          <Grid size={{ xs: 12, sm: 12, md: 6 }} sx={{ height: 'auto' }}>
+            <Item
+              elevation={4}
+              sx={{
+                bgcolor: theme.palette.background.default,
+                borderRadius: 4,
+                height: '35%',
+              }}
+            >
+              <TaskStatus />
+            </Item>
+            <Item
+              elevation={4}
+              sx={{
+                bgcolor: theme.palette.background.default,
+                borderRadius: 4,
+                mt: 2,
+                height: '62%',
+              }}
+            >
+              <CompleteTask />
+            </Item>
           </Grid>
         </Grid>
       </Box>
