@@ -4,11 +4,11 @@ import styled from '@emotion/styled';
 import TodoSection from '../components/TodoSection';
 import TaskStatus from '../components/TaskStatus';
 import CompleteTask from '../components/CompleteTask';
-import TaskCard from '../components/ui/TaskCard';
+import TaskCard from '../components/TaskCard';
 import cardimg3 from '../assets/images/cardimg3.png';
 import { useState } from 'react';
-import InviteModel from '../components/ui/InviteModel';
-import AddTaskModel from '../components/ui/AddTaskModel';
+import InviteModel from '../components/InviteModel';
+import AddTaskModel from '../components/AddTaskModel';
 
 const Item = styled(Paper)(({}) => ({
   backgroundColor: 'background.default',
@@ -93,7 +93,7 @@ const Dashboard = () => {
                 bgcolor: theme.palette.background.default,
                 borderRadius: 4,
                 mt: 2,
-                height: '62%',
+                height: '62.4%',
               }}
             >
               <CompleteTask />

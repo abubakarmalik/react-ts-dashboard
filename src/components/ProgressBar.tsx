@@ -21,10 +21,7 @@ const ProgressBar = ({ percentage, color, status }: ProgressBarPropsType) => {
           pathColor: color,
         })}
       />
-      <Box
-        component="p"
-        sx={{ color: color, fontSize: { xs: 12, sm: 14, md: 16 } }}
-      >
+      <Box component="p" sx={{ color: color, fontSize: { xs: 12, sm: 14 } }}>
         <CircleIcon sx={{ fontSize: '8px' }} /> {status}
       </Box>
     </Box>

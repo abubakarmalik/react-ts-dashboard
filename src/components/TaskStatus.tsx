@@ -1,6 +1,6 @@
 import { Box, Grid, Typography, useTheme } from '@mui/material';
 import book from '../assets/icons/Book.png';
-import ProgressBar from './ui/ProgressBar';
+import ProgressBar from './ProgressBar';
 
 const TaskStatus = () => {
   const theme = useTheme();

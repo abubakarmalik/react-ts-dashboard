@@ -1,9 +1,9 @@
 import { Grid, useTheme } from '@mui/material';
-import TopHeading from '../components/ui/TopHeading';
-import TaskCard from '../components/ui/TaskCard';
+import TopHeading from '../components/TopHeading';
+import TaskCard from '../components/TaskCard';
 import cardimg4 from '../assets/images/cardimg4.png';
 import cardimg5 from '../assets/images/cardimg5.png';
-import TaskCardDetails from '../components/ui/TaskCardDetails';
+import TaskCardDetails from '../components/TaskCardDetails';
 
 const list1 = [
   'Listen to a podcast or audiobook',

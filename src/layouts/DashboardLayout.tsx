@@ -1,17 +1,26 @@
-import { Box, Fab, useTheme } from '@mui/material';
+import { Backdrop, Box, Fab, Tooltip, useTheme } from '@mui/material';
 import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import Sidebar from '../components/Sidebar';
-import AddTaskModel from '../components/ui/AddTaskModel';
+import AddTaskModel from '../components/AddTaskModel';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const DashboardLayout = () => {
   const theme = useTheme();
   const [open, setOpen] = useState<boolean>(false);
+  const [openBackDrop, setOpenBackDrop] = useState<boolean>(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(!open);
+  };
+
+  const handleCloseBackDrop = () => {
+    setOpenBackDrop(false);
+  };
+  const handleOpenBackDrop = () => {
+    setOpenBackDrop(true);
   };
 
   const [openAddTask, setOpenAddTask] = useState<boolean>(false);
@@ -26,10 +35,17 @@ const DashboardLayout = () => {
       }}
     >
       {/* Fixed Navbar - Full Width */}
-      <Navbar toggleDrawer={toggleDrawer} />
+      <Navbar
+        toggleDrawer={toggleDrawer}
+        handleOpenBackDrop={handleOpenBackDrop}
+      />
 
       {/*Sidebar - Drawer on mobile, Fixed on desktop */}
-      <Sidebar open={open} toggleDrawer={toggleDrawer} />
+      <Sidebar
+        open={open}
+        toggleDrawer={toggleDrawer}
+        handleOpenBackDrop={handleOpenBackDrop}
+      />
 
       {/* Main Content Area */}
       <Box
@@ -49,15 +65,17 @@ const DashboardLayout = () => {
             component="div"
             sx={{ position: 'fixed', bottom: 20, right: 20 }}
           >
-            <Fab
-              size="medium"
-              color="primary"
-              sx={{ color: theme.palette.background.default }}
-              aria-label="add"
-              onClick={handleOpenAddTask}
-            >
-              <AddIcon />
-            </Fab>
+            <Tooltip title="Add Task">
+              <Fab
+                size="medium"
+                color="primary"
+                sx={{ color: theme.palette.background.default }}
+                aria-label="add"
+                onClick={handleOpenAddTask}
+              >
+                <AddIcon />
+              </Fab>
+            </Tooltip>
           </Box>
         </Box>
         <AddTaskModel
@@ -65,6 +83,16 @@ const DashboardLayout = () => {
           handleClose={handleCloseAddTask}
           heading="Add New Task"
         />
+        <Backdrop
+          sx={(theme) => ({
+            color: '#fff',
+            zIndex: theme.zIndex.drawer + 1,
+          })}
+          open={openBackDrop}
+          onClick={handleCloseBackDrop}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
       </Box>
     </Box>
   );

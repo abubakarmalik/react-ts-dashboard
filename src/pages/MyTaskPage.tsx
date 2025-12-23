@@ -1,9 +1,9 @@
 import { Box, Grid, Slider, Typography, useTheme } from '@mui/material';
 
-import TaskCard from '../components/ui/TaskCard';
+import TaskCard from '../components/TaskCard';
 import cardimg6 from '../assets/images/cardimg6.png';
 import cardimg7 from '../assets/images/cardimg7.png';
-import TaskCardDetails from '../components/ui/TaskCardDetails';
+import TaskCardDetails from '../components/TaskCardDetails';
 import { useState } from 'react';
 
 const list1 = [

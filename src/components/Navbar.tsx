@@ -14,9 +14,10 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useTheme } from '@mui/material/styles';
-import { useOutletContext } from 'react-router-dom';
-import { FormControlLabel, Switch } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Chip, Divider, FormControlLabel, Switch } from '@mui/material';
 import { useThemeMode } from '../theme/ThemeModeContext';
+import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -44,7 +45,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('xs')]: {
-      width: '9ch',
+      width: '7ch',
     },
     [theme.breakpoints.up('sm')]: {
       width: '25ch',
@@ -124,9 +125,13 @@ const RoundIconBtn = styled(IconButton)(({ theme }) => ({
 
 type DrawerProps = {
   toggleDrawer: (newOpen: boolean) => () => void;
+  handleOpenBackDrop: () => void;
 };
 
-export default function Navbar({ toggleDrawer }: DrawerProps) {
+export default function Navbar({
+  toggleDrawer,
+  handleOpenBackDrop,
+}: DrawerProps) {
   const theme = useTheme();
   const { mode, toggleMode } = useThemeMode();
 
@@ -136,6 +141,14 @@ export default function Navbar({ toggleDrawer }: DrawerProps) {
   const today = new Date().toLocaleDateString('en-GB');
   const day = new Date().toLocaleDateString('en-US', { weekday: 'long' });
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const navigate = useNavigate();
+  const handleLogoutbtn = () => {
+    handleOpenBackDrop();
+    setTimeout(() => {
+      navigate('/auth/signin');
+    }, 2000);
+  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -166,25 +179,41 @@ export default function Navbar({ toggleDrawer }: DrawerProps) {
         <FormControlLabel
           control={
             <MaterialUISwitch
-              sx={{ m: 1 }}
+              sx={{}}
               onChange={toggleMode}
               checked={mode === 'dark'}
             />
           }
           label=""
         />
+        <Typography component="p">Theme Switch</Typography>
       </MenuItem>
+      <Divider />
       <MenuItem>
         <RoundIconBtn>
           <NotificationsIcon />
         </RoundIconBtn>
-        <p>Notifications</p>
+        <Typography component="p" sx={{ ml: 1 }}>
+          Notifications
+        </Typography>
       </MenuItem>
+      <Divider />
       <MenuItem>
         <RoundIconBtn>
           <CalendarMonthIcon />
         </RoundIconBtn>
-        <p>Calendar</p>
+        <Typography component="p" sx={{ ml: 1 }}>
+          Calendar
+        </Typography>
+      </MenuItem>
+      <Divider />
+      <MenuItem onClick={handleLogoutbtn}>
+        <RoundIconBtn>
+          <LogoutIcon />
+        </RoundIconBtn>
+        <Typography component="p" sx={{ ml: 1 }}>
+          Logout
+        </Typography>
       </MenuItem>
     </Menu>
   );
@@ -280,6 +309,18 @@ export default function Navbar({ toggleDrawer }: DrawerProps) {
             </Typography>
           </Box>
         </Box>
+        <Chip
+          deleteIcon={<LogoutIcon />}
+          label="Logout"
+          variant="outlined"
+          sx={{
+            ml: 2,
+            cursor: 'pointer',
+            padding: 1,
+            display: { xs: 'none', md: 'flex' },
+          }}
+          onDelete={handleLogoutbtn}
+        />
 
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
           <IconButton

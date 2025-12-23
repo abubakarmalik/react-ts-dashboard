@@ -2,7 +2,7 @@ import { Box, Grid, Typography, useTheme } from '@mui/material';
 import pending from '../assets/icons/Pending.png';
 import AddIcon from '@mui/icons-material/Add';
 import CircleIcon from '@mui/icons-material/Circle';
-import TaskCard from './ui/TaskCard';
+import TaskCard from './TaskCard';
 import cardimg1 from '../assets/images/cardimg1.png';
 import cardimg2 from '../assets/images/cardimg2.png';
 

@@ -1,5 +1,5 @@
 import { Grid, useTheme } from '@mui/material';
-import AccordionUsage from '../components/ui/AccordionUsage';
+import AccordionUsage from '../components/AccordionUsage';
 
 const SettingPage = () => {
   const theme = useTheme();

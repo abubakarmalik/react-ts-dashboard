@@ -1,6 +1,6 @@
 import { Box, Grid, Typography, useTheme } from '@mui/material';
 import book from '../assets/icons/Book.png';
-import TaskCard from './ui/TaskCard';
+import TaskCard from './TaskCard';
 import cardimg4 from '../assets/images/cardimg4.png';
 import cardimg3 from '../assets/images/cardimg3.png';
 

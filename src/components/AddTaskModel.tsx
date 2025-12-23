@@ -26,7 +26,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '70vw',
+  width: '75vw',
   bgcolor: 'background.default',
   boxShadow: 24,
   p: 4,
@@ -141,7 +141,7 @@ export default function AddTaskModel({
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     borderRadius: 2,
-                    width: { xs: 220, sm: 400, md: 600 },
+                    width: { xs: 180, sm: 400, md: 600 },
                     height: { xs: 40 },
                     color: theme.palette.text.primary,
                   },
@@ -171,7 +171,7 @@ export default function AddTaskModel({
                       textField: {
                         InputProps: {
                           sx: {
-                            width: { xs: 220, sm: 400, md: 600 },
+                            width: { xs: 180, sm: 400, md: 600 },
                             color: theme.palette.text.primary,
                             borderRadius: 2,
                             height: 45,
@@ -264,7 +264,7 @@ export default function AddTaskModel({
                     fullWidth
                   />
                 </Grid>
-                <Grid size={{ xs: 8, md: 4 }}>
+                <Grid size={{ xs: 12, md: 4 }}>
                   <Typography
                     component="p"
                     sx={{

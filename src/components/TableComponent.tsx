@@ -12,10 +12,15 @@ import {
   Paper,
   Stack,
   useTheme,
+  type SnackbarCloseReason,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import EditDocumentIcon from '@mui/icons-material/EditDocument';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useState } from 'react';
+import ConfirmationDialog from './ConfirmationDialog';
+import SnackbarComponent from './SnackbarComponent';
+import Pagination from '@mui/material/Pagination';
 
 interface TablePropsTypes {
   heading: string;
@@ -33,8 +38,36 @@ const TableComponent = ({
   list,
 }: TablePropsTypes) => {
   const theme = useTheme();
+  const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
+
+  const [openConfirmationDialog, setOpenConfirmationDialog] =
+    useState<boolean>(false);
+
+  const handleClickSnackbar = () => {
+    handleCloseConfirmationDialog();
+    setOpenSnackbar(true);
+  };
+
+  const handleCloseSnackbar = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenSnackbar(false);
+  };
+
+  const handleClickOpenConfirmationDialog = () => {
+    setOpenConfirmationDialog(true);
+  };
+
+  const handleCloseConfirmationDialog = () => {
+    setOpenConfirmationDialog(false);
+  };
   return (
-    <Box>
+    <>
       {/* Top header */}
       <Grid
         container
@@ -193,6 +226,7 @@ const TableComponent = ({
                             boxShadow: 'none',
                           },
                         }}
+                        onClick={handleClickOpenConfirmationDialog}
                       >
                         Delete
                       </Button>
@@ -203,8 +237,17 @@ const TableComponent = ({
             </TableBody>
           </Table>
         </TableContainer>
+          <Box component="div" sx={{mt:2, display: 'flex', justifyContent: 'center'}}>
+            <Pagination count={3} color="secondary" />
+          </Box>
       </Box>
-    </Box>
+      <ConfirmationDialog
+        open={openConfirmationDialog}
+        onClose={handleCloseConfirmationDialog}
+        onConfirm={handleClickSnackbar}
+      />
+      <SnackbarComponent open={openSnackbar} onClose={handleCloseSnackbar} />
+    </>
   );
 };
 

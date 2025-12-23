@@ -1,9 +1,9 @@
 import { Box, Button, Divider, Grid, useTheme } from '@mui/material';
-import TopHeading from '../components/ui/TopHeading';
-import TableComponent from '../components/ui/TableComponent';
+import TopHeading from '../components/TopHeading';
+import TableComponent from '../components/TableComponent';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import StatusModel from '../components/ui/StatusModel';
+import StatusModel from '../components/StatusModel';
 
 const TaskCategoryPage = () => {
   const theme = useTheme();

@@ -7,6 +7,7 @@ import {
   Checkbox,
   FormControlLabel,
   Button,
+  Alert,
 } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
@@ -16,6 +17,8 @@ import fb from '../assets/icons/fb.png';
 import google from '../assets/icons/google.png';
 import x from '../assets/icons/x.png';
 import { Link, useNavigate } from 'react-router-dom';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { useState, useEffect } from 'react';
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
   '& .MuiOutlinedInput-root': {
@@ -56,9 +59,15 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 
 const Login = () => {
   const navigate = useNavigate();
+  const [showAlert, setShowAlert] = useState<boolean>(true);
   const handleLoninbtn = () => {
     navigate('/');
   };
+
+  useEffect(() => {
+    setInterval(() => setShowAlert(false), 2000);
+  }, [showAlert]);
+
   return (
     <Grid
       container
@@ -73,6 +82,14 @@ const Login = () => {
           p: 4,
         }}
       >
+        {showAlert && (
+          <Alert
+            icon={<CheckCircleIcon fontSize="inherit" />}
+            severity="success"
+          >
+            Confirmation that Logout was successful.
+          </Alert>
+        )}
         <Typography
           component="h4"
           sx={{ fontWeight: '700', fontSize: '36px', mb: 1 }}

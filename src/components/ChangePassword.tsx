@@ -6,7 +6,7 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
-import Ellipse from '../../assets/images/Ellipse.png';
+import Ellipse from '../assets/images/Ellipse.png';
 
 const ChangePassword = () => {
   const theme = useTheme();

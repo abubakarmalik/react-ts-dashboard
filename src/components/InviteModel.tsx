@@ -13,10 +13,10 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import avatar1 from '../../assets/images/invite-avatar1.png';
-import avatar2 from '../../assets/images/invite-avatar2.png';
-import avatar3 from '../../assets/images/invite-avatar3.png';
-import avatar4 from '../../assets/images/invite-avatar4.png';
+import avatar1 from '../assets/images/invite-avatar1.png';
+import avatar2 from '../assets/images/invite-avatar2.png';
+import avatar3 from '../assets/images/invite-avatar3.png';
+import avatar4 from '../assets/images/invite-avatar4.png';
 
 const style = {
   position: 'absolute',
@@ -24,9 +24,9 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: {
-    xs: '90vw',
-    sm: 500,
-    md: 600,
+    xs: '90%',
+    sm: 600,
+    md: 700,
   },
 
   bgcolor: 'background.default',
@@ -89,7 +89,7 @@ export default function InviteModel({ open, handleClose }: InviteModelType) {
             <Box sx={{}}>
               <Typography
                 component="p"
-                sx={{ fontSize: { xs: '14px', sm: '18px' } }}
+                sx={{ fontSize: { xs: '12px', sm: '18px' } }}
               >
                 Send an invite to a new member
               </Typography>
@@ -110,7 +110,7 @@ export default function InviteModel({ open, handleClose }: InviteModelType) {
                 onClick={handleClose}
                 sx={{
                   color: theme.palette.text.primary,
-                  fontSize: { xs: '14px', sm: '18px' },
+                  fontSize: { xs: '12px', sm: '18px' },
                 }}
               >
                 Go Back
@@ -144,9 +144,10 @@ export default function InviteModel({ open, handleClose }: InviteModelType) {
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     borderRadius: 2,
-                    width: { xs: 150, sm: 300, md: 430 },
+                    width: { xs: 120, sm: 300, md: 350 },
                     height: { xs: 30, sm: 40, md: 50 },
                     color: theme.palette.text.primary,
+                    fontSize: { xs: 9, sm: 12, md: 14 },
                   },
                   '& .Mui-focused': {
                     borderColor: theme.palette.secondary.main,
@@ -161,8 +162,10 @@ export default function InviteModel({ open, handleClose }: InviteModelType) {
                   borderRadius: 2,
                   background: theme.palette.secondary.main,
                   color: theme.palette.background.default,
-                  minWidth: { xs: 40, sm: 130 },
+                  width: { xs: 100, sm: 130 },
                   height: { xs: 30, sm: 40, md: 50 },
+                  fontSize: { xs: 9, sm: 12, md: 14 },
+                  ml: 1,
                 }}
               >
                 Send Invite
@@ -210,13 +213,19 @@ export default function InviteModel({ open, handleClose }: InviteModelType) {
                         >
                           {item.name}
                         </Typography>
-                        <Typography component="p" sx={{ fontSize: '12px' }}>
+                        <Typography
+                          component="p"
+                          sx={{ fontSize: { xs: 10, sm: 12, md: 14 } }}
+                        >
                           {item.email}
                         </Typography>
                       </Box>
                     </Box>
                     <Box component="div">
-                      <Typography component="p">
+                      <Typography
+                        component="p"
+                        sx={{ fontSize: { xs: 10, sm: 12, md: 14 } }}
+                      >
                         Can edit
                         <Box component="span" sx={{ ml: 1 }}>
                           <KeyboardArrowDownIcon />
@@ -245,9 +254,10 @@ export default function InviteModel({ open, handleClose }: InviteModelType) {
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     borderRadius: 2,
-                    width: { xs: 150, sm: 300, md: 430 },
+                    width: { xs: 120, sm: 300, md: 350 },
                     height: { xs: 30, sm: 40, md: 50 },
                     color: theme.palette.text.primary,
+                    fontSize: { xs: 9, sm: 12, md: 14 },
                   },
                   '& .Mui-focused': {
                     borderColor: theme.palette.secondary.main,
@@ -262,8 +272,9 @@ export default function InviteModel({ open, handleClose }: InviteModelType) {
                   borderRadius: 2,
                   background: theme.palette.secondary.main,
                   color: theme.palette.background.default,
-                  minWidth: { xs: 40, sm: 130 },
+                  width: { xs: 100, sm: 130 },
                   height: { xs: 30, sm: 40, md: 50 },
+                  fontSize: { xs: 9, sm: 12, md: 14 },
                 }}
               >
                 Copy Link

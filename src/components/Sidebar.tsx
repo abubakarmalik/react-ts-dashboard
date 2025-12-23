@@ -32,6 +32,7 @@ interface MenuItem {
 interface SidebarProps {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => () => void;
+  handleOpenBackDrop: () => void;
 }
 
 const SidebarContent = ({
@@ -260,13 +261,16 @@ const SidebarContent = ({
   );
 };
 
-const Sidebar = ({ open, toggleDrawer }: SidebarProps) => {
+const Sidebar = ({ open, toggleDrawer, handleOpenBackDrop }: SidebarProps) => {
   const location = useLocation();
   const [activeMenu, setActiveMenu] = useState(location.pathname);
 
   const navigate = useNavigate();
   const handleLogoutbtn = () => {
-    navigate('/auth/signin');
+    handleOpenBackDrop();
+    setTimeout(() => {
+      navigate('/auth/signin');
+    }, 2000);
   };
 
   return (

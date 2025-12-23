@@ -7,7 +7,7 @@ import {
   Autocomplete,
   useTheme,
 } from '@mui/material';
-import Ellipse from '../../assets/images/Ellipse.png';
+import Ellipse from '../assets/images/Ellipse.png';
 interface AutocompleteOption {
   label: string;
 }
