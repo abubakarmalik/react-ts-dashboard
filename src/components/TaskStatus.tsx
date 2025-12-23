@@ -29,7 +29,10 @@ const TaskStatus = () => {
       >
         <Box
           component="div"
-          sx={{ height: '100%', width: { xs: '30%', sm: '20%', md: '30%' } }}
+          sx={{
+            height: '100%',
+            width: { xs: '30%', sm: '20%', md: '30%', xl: '20%' },
+          }}
         >
           <ProgressBar
             percentage={84}
@@ -39,7 +42,10 @@ const TaskStatus = () => {
         </Box>
         <Box
           component="div"
-          sx={{ height: '100%', width: { xs: '30%', sm: '20%', md: '30%' } }}
+          sx={{
+            height: '100%',
+            width: { xs: '30%', sm: '20%', md: '30%', xl: '20%' },
+          }}
         >
           <ProgressBar
             percentage={64}
@@ -49,7 +55,10 @@ const TaskStatus = () => {
         </Box>
         <Box
           component="div"
-          sx={{ height: '100%', width: { xs: '30%', sm: '20%', md: '30%' } }}
+          sx={{
+            height: '100%',
+            width: { xs: '30%', sm: '20%', md: '30%', xl: '20%' },
+          }}
         >
           <ProgressBar
             percentage={13}

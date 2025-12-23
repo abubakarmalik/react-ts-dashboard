@@ -16,7 +16,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import { useTheme } from '@mui/material/styles';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Chip, Divider, FormControlLabel, Switch } from '@mui/material';
-import { useThemeMode } from '../theme/ThemeModeContext';
+import { useThemeMode } from '../context/ThemeModeContext';
 import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
@@ -48,9 +48,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       width: '7ch',
     },
     [theme.breakpoints.up('sm')]: {
-      width: '25ch',
+      width: '20ch',
     },
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('lg')]: {
       width: '30ch',
     },
   },
@@ -227,112 +227,116 @@ export default function Navbar({
         zIndex: (theme) => theme.zIndex.drawer + 1,
       }}
     >
-      <Toolbar>
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="open drawer"
-          sx={{ mr: 2, display: { xs: 'block', md: 'none' } }}
-          onClick={toggleDrawer(true)}
-        >
-          <MenuIcon sx={{ color: 'text.secondary' }} />
-        </IconButton>
-
-        <Typography
-          variant="h6"
-          noWrap
-          component="div"
-          sx={{
-            display: { xs: 'none', md: 'block' },
-            fontSize: '22px',
-            fontWeight: '600',
-          }}
-          color="text.secondary"
-        >
-          Dash
-          <Box component="span" color="text.primary">
-            board
-          </Box>
-        </Typography>
-
-        <Box sx={{ flexGrow: 1 }} />
-
-        <Search>
-          <StyledInputBase
-            placeholder={'Search your task here'}
-            inputProps={{ 'aria-label': 'search' }}
-          />
-          <RoundIconBtn>
-            <SearchIcon />
-          </RoundIconBtn>
-        </Search>
-
-        <Box
-          sx={{
-            flexGrow: 1,
-            textAlign: 'right',
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <FormControlLabel
-            control={
-              <MaterialUISwitch
-                sx={{ m: 1 }}
-                onChange={toggleMode}
-                checked={mode === 'dark'}
-              />
-            }
-            label=""
-          />
-        </Box>
-
-        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-          <RoundIconBtn sx={{ mr: 1 }}>
-            <NotificationsIcon />
-          </RoundIconBtn>
-          <RoundIconBtn sx={{ mr: 1 }}>
-            <CalendarMonthIcon />
-          </RoundIconBtn>
-          <Box sx={{ textAlign: 'left', marginLeft: 1 }}>
-            <Typography sx={{ fontWeight: 600, fontSize: '14px' }}>
-              {day}
-            </Typography>
-            <Typography
-              sx={{
-                color: 'info.main',
-                fontSize: '13px',
-                fontWeight: 500,
-              }}
-            >
-              {today}
-            </Typography>
-          </Box>
-        </Box>
-        <Chip
-          deleteIcon={<LogoutIcon />}
-          label="Logout"
-          variant="outlined"
-          sx={{
-            ml: 2,
-            cursor: 'pointer',
-            padding: 1,
-            display: { xs: 'none', md: 'flex' },
-          }}
-          onDelete={handleLogoutbtn}
-        />
-
-        <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        {/* LEFT BOX */}
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <IconButton
             size="large"
-            aria-label="show more"
-            aria-controls={mobileMenuId}
-            aria-haspopup="true"
-            onClick={handleMobileMenuOpen}
+            edge="start"
             color="inherit"
+            aria-label="open drawer"
+            sx={{ mr: 2, display: { xs: 'block', md: 'none' } }}
+            onClick={toggleDrawer(true)}
           >
-            <MoreIcon sx={{ color: theme.palette.text.secondary }} />
+            <MenuIcon sx={{ color: 'text.secondary' }} />
           </IconButton>
+
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{
+              display: { xs: 'none', md: 'block' },
+              fontSize: '22px',
+              fontWeight: '600',
+            }}
+            color="text.secondary"
+          >
+            Dash
+            <Box component="span" color="text.primary">
+              board
+            </Box>
+          </Typography>
+        </Box>
+
+        {/* CENTER BOX - Search Bar */}
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Search>
+            <StyledInputBase
+              placeholder={'Search your task here'}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+            <RoundIconBtn>
+              <SearchIcon />
+            </RoundIconBtn>
+          </Search>
+        </Box>
+
+        {/* RIGHT BOX */}
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+            <FormControlLabel
+              control={
+                <MaterialUISwitch
+                  sx={{ m: 1 }}
+                  onChange={toggleMode}
+                  checked={mode === 'dark'}
+                />
+              }
+              label=""
+            />
+          </Box>
+
+          <Box
+            sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}
+          >
+            <RoundIconBtn sx={{ mr: 1 }}>
+              <NotificationsIcon />
+            </RoundIconBtn>
+            <RoundIconBtn sx={{ mr: 1 }}>
+              <CalendarMonthIcon />
+            </RoundIconBtn>
+            <Box sx={{ textAlign: 'left', marginLeft: 1 }}>
+              <Typography sx={{ fontWeight: 600, fontSize: '14px' }}>
+                {day}
+              </Typography>
+              <Typography
+                sx={{
+                  color: 'info.main',
+                  fontSize: '13px',
+                  fontWeight: 500,
+                }}
+              >
+                {today}
+              </Typography>
+            </Box>
+          </Box>
+
+          <Chip
+            deleteIcon={<LogoutIcon />}
+            label="Logout"
+            variant="outlined"
+            sx={{
+              ml: 2,
+              cursor: 'pointer',
+              padding: 1,
+              display: { xs: 'none', md: 'flex' },
+            }}
+            onDelete={handleLogoutbtn}
+          />
+
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="show more"
+              aria-controls={mobileMenuId}
+              aria-haspopup="true"
+              onClick={handleMobileMenuOpen}
+              color="inherit"
+            >
+              <MoreIcon sx={{ color: theme.palette.text.secondary }} />
+            </IconButton>
+          </Box>
         </Box>
       </Toolbar>
       {renderMobileMenu}

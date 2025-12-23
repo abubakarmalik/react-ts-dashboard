@@ -4,7 +4,7 @@ import { router } from './routes/Routes';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { useMemo, useState, useEffect } from 'react';
 import { getTheme } from './theme';
-import { ThemeModeContext } from './theme/ThemeModeContext';
+import { ThemeModeContext } from './context/ThemeModeContext';
 
 function App() {
   const [mode, setMode] = useState<'light' | 'dark'>('light');
