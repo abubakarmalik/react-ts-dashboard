@@ -1,9 +1,22 @@
-import { Box, Button, Divider, Grid, useTheme } from '@mui/material';
+import {
+  Box,
+  Button,
+  Grid,
+  useTheme,
+  BottomNavigationAction,
+  BottomNavigation,
+} from '@mui/material';
 import TopHeading from '../components/TopHeading';
 import TableComponent from '../components/TableComponent';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, type SyntheticEvent } from 'react';
 import StatusModel from '../components/StatusModel';
+import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
+import PriorityHighOutlinedIcon from '@mui/icons-material/PriorityHighOutlined';
+import WebAssetOutlinedIcon from '@mui/icons-material/WebAssetOutlined';
+import MrtBasic from '../components/MrtBasic';
+import EditCalendarIcon from '@mui/icons-material/EditCalendar';
+import EditingMrtComponent from '../components/EditingMrtComponent';
 
 const TaskCategoryPage = () => {
   const theme = useTheme();
@@ -13,6 +26,11 @@ const TaskCategoryPage = () => {
   const [openPriorityStatus, setOpenPriorityStatus] = useState<boolean>(false);
   const handleOpenPriorityStatus = () => setOpenPriorityStatus(true);
   const handleClosePriorityStatus = () => setOpenPriorityStatus(false);
+  const [value, setValue] = useState('status');
+
+  const handleChange = (event: SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
 
   const navigate = useNavigate();
 
@@ -52,21 +70,54 @@ const TaskCategoryPage = () => {
               Add Category
             </Button>
           </Box>
-          <TableComponent
-            heading="Task Status"
-            buttonAction={handleOpenTaskStatus}
-            editAction={handleOpenTaskStatus}
-            buttonText="Add Task Status"
-            list={['Completed', 'In Progress', 'Not Started']}
-          />
-          <Divider sx={{ mt: 2, mb: 2 }} />
-          <TableComponent
-            heading="Task Priority"
-            buttonAction={handleOpenPriorityStatus}
-            editAction={handleOpenPriorityStatus}
-            buttonText="Add New Priority"
-            list={['Extreme', 'Low', 'High']}
-          />
+          {value === 'status' && (
+            <TableComponent
+              heading="Task Status"
+              buttonAction={handleOpenTaskStatus}
+              editAction={handleOpenTaskStatus}
+              buttonText="Add Task Status"
+              list={['Completed', 'In Progress', 'Not Started']}
+            />
+          )}
+
+          {value === 'priority' && (
+            <TableComponent
+              heading="Task Priority"
+              buttonAction={handleOpenPriorityStatus}
+              editAction={handleOpenPriorityStatus}
+              buttonText="Add New Priority"
+              list={['Extreme', 'Low', 'High']}
+            />
+          )}
+          {value === 'basic' && <MrtBasic />}
+          {value === 'editing' && <EditingMrtComponent />}
+
+          <BottomNavigation
+            sx={{ width: '100%' }}
+            value={value}
+            onChange={handleChange}
+          >
+            <BottomNavigationAction
+              label="Status"
+              value="status"
+              icon={<AssignmentOutlinedIcon />}
+            />
+            <BottomNavigationAction
+              label="Priority"
+              value="priority"
+              icon={<PriorityHighOutlinedIcon />}
+            />
+            <BottomNavigationAction
+              label="Basic"
+              value="basic"
+              icon={<WebAssetOutlinedIcon />}
+            />
+            <BottomNavigationAction
+              label="Editing"
+              value="editing"
+              icon={<EditCalendarIcon />}
+            />
+          </BottomNavigation>
         </Grid>
       </Grid>
       <StatusModel

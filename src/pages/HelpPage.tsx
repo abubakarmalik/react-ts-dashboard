@@ -4,6 +4,8 @@ import Tab from '@mui/material/Tab';
 import StepperComponent from '../components/StepperComponent';
 import { useState } from 'react';
 import MasonryImageList from '../components/MasonryImageList';
+import TransferListComponent from '../components/TransferListComponent';
+import RatingComponent from '../components/RatingComponent';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -50,6 +52,8 @@ const HelpPage = () => {
         >
           <Tab label="Help" {...a11yProps(0)} />
           <Tab label="Image List" {...a11yProps(1)} />
+          <Tab label="Transfer List" {...a11yProps(2)} />
+          <Tab label="Ratting" {...a11yProps(3)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -57,6 +61,12 @@ const HelpPage = () => {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <MasonryImageList />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={2}>
+        <TransferListComponent />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={3}>
+        <RatingComponent />
       </CustomTabPanel>
     </Box>
   );
