@@ -15,7 +15,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useTheme } from '@mui/material/styles';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Chip, Divider, FormControlLabel, Switch } from '@mui/material';
+import { Badge, Chip, Divider, FormControlLabel, Switch } from '@mui/material';
 import { useThemeMode } from '../context/ThemeModeContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -291,7 +291,9 @@ export default function Navbar({
             sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}
           >
             <RoundIconBtn sx={{ mr: 1 }}>
-              <NotificationsIcon />
+              <Badge badgeContent={4} color="error">
+                <NotificationsIcon />
+              </Badge>
             </RoundIconBtn>
             <RoundIconBtn sx={{ mr: 1 }}>
               <CalendarMonthIcon />
@@ -323,6 +325,7 @@ export default function Navbar({
               display: { xs: 'none', md: 'flex' },
             }}
             onDelete={handleLogoutbtn}
+            onClick={handleLogoutbtn}
           />
 
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>

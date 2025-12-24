@@ -8,7 +8,6 @@ import {
 import TopHeading from '../components/TopHeading';
 import OneFieldForm from '../components/OneFieldForm';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import HomeIcon from '@mui/icons-material/Home';
 import CategoryIcon from '@mui/icons-material/Category';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import { Link as RouterLink } from 'react-router-dom';
@@ -17,25 +16,7 @@ const AddCategoryPage = () => {
   const theme = useTheme();
 
   const breadcrumbs = [
-    <MuiLink
-      key="1"
-      component={RouterLink}
-      to="/"
-      underline="hover"
-      color="inherit"
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        color: theme.palette.text.primary,
-        fontSize: 12,
-      }}
-    >
-      <HomeIcon
-        sx={{ mr: 0.5, color: theme.palette.primary.main }}
-        fontSize="inherit"
-      />
-      Home
-    </MuiLink>,
+  
     <MuiLink
       key="2"
       component={RouterLink}

@@ -11,7 +11,7 @@ import {
   Drawer,
   useTheme,
 } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ellipse from '../assets/images/Ellipse.png';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -42,6 +42,14 @@ const SidebarContent = ({
   handleLogoutbtn,
 }: any) => {
   const theme = useTheme();
+  const location = useLocation();
+  const isActiveRoute = (path: string) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
+
   const menuItems: MenuItem[] = [
     {
       id: 'dashboard',
@@ -272,6 +280,10 @@ const Sidebar = ({ open, toggleDrawer, handleOpenBackDrop }: SidebarProps) => {
       navigate('/auth/signin');
     }, 2000);
   };
+
+  useEffect(() => {
+    console.log(activeMenu);
+  }, [activeMenu]);
 
   return (
     <>

@@ -10,6 +10,13 @@ import {
   Button,
   Checkbox,
   useTheme,
+  Select,
+  type SelectChangeEvent,
+  OutlinedInput,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { DemoItem } from '@mui/x-date-pickers/internals/demo';
@@ -19,7 +26,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import CircleIcon from '@mui/icons-material/Circle';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const style = {
   position: 'absolute',
@@ -31,7 +38,7 @@ const style = {
   boxShadow: 24,
   p: 4,
   height: '80vh',
-  overflow: 'scroll',
+  overflow: 'auto',
   borderRadius: 4,
 };
 
@@ -41,6 +48,30 @@ interface AddTaskModelType {
   heading: string;
 }
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
+const names = [
+  'Design',
+  'Deployment',
+  'Frontend',
+  'Backend',
+  'Database',
+  'QA',
+  'Documentation',
+  'Lead',
+  'Managerial',
+  'General',
+];
+
 export default function AddTaskModel({
   open,
   handleClose,
@@ -49,6 +80,16 @@ export default function AddTaskModel({
   const label = { slotProps: { input: { 'aria-label': 'Checkbox demo' } } };
   const theme = useTheme();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [personName, setPersonName] = useState<string[]>([]);
+  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
+  };
 
   const handleBrowseClick = () => {
     fileInputRef.current?.click();
@@ -120,6 +161,41 @@ export default function AddTaskModel({
           >
             {/* Form */}
             <Box component="div">
+              <Typography
+                component="p"
+                sx={{
+                  fontWeight: '600',
+                  mb: 1,
+                  fontSize: { xs: '12px', sm: '14px' },
+                  ml: 1,
+                }}
+              >
+                Task Category
+              </Typography>
+              <Select
+                labelId="demo-multiple-name-label"
+                id="demo-multiple-name"
+                value={personName}
+                onChange={handleChange}
+                input={<OutlinedInput />}
+                MenuProps={MenuProps}
+                sx={{
+                  height: 40,
+                  width: { xs: 180, sm: 400, md: 600 },
+                  borderRadius: 2,
+                  mb: 1,
+                }}
+              >
+                {names.map((name) => (
+                  <MenuItem
+                    key={name}
+                    value={name}
+                    style={{ fontWeight: '500' }}
+                  >
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
               <Typography
                 component="p"
                 sx={{
@@ -240,6 +316,36 @@ export default function AddTaskModel({
                   />
                 </Box>
               </Box>
+              <Typography
+                component="p"
+                sx={{
+                  fontWeight: '600',
+                  mb: 1,
+                  fontSize: { xs: '12px', sm: '14px' },
+                  ml: 1,
+                  mt: 1,
+                }}
+              >
+                Status
+              </Typography>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
+              >
+                <FormControlLabel
+                  value="draft"
+                  control={<Radio />}
+                  label="Draft"
+                  color="secondary"
+                />
+                <FormControlLabel
+                  value="publish"
+                  control={<Radio />}
+                  label="Publish"
+                  color="secondary"
+                />
+              </RadioGroup>
               <Grid container spacing={2}>
                 <Grid size={{ xs: 12, md: 8 }}>
                   <Typography
